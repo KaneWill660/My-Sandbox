@@ -1,0 +1,46 @@
+﻿<Window x:Class="Wyckoff_Strategy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wyckoff_Strategy"
+        
+         xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- TOP BAR -->
+        <DockPanel Margin="10" Grid.Row="0">
+            <!-- Button bên trái -->
+            <Button x:Name="btnScanAll" Content="Scan All" Width="150" Height="40" Margin="5" DockPanel.Dock="Left" Click="btnScanAll_Click"/>
+
+            <!-- Progress Status bên phải -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
+                <TextBlock x:Name="txtStatus" Text="Đang chờ..." VerticalAlignment="Center" Margin="10,0"/>
+                <ProgressBar x:Name="progressBar" Width="250" Height="20" Margin="10,0"/>
+            </StackPanel>
+        </DockPanel>
+
+        <!-- MAIN CONTENT -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <!-- List kết quả -->
+                <ColumnDefinition Width="*"/>
+                <!-- Biểu đồ -->
+            </Grid.ColumnDefinitions>
+
+            <!-- DANH SÁCH KẾT QUẢ -->
+            <ListBox x:Name="lstResults" Grid.Column="0" Margin="10" SelectionChanged="lstResults_SelectionChanged"/>
+
+            <!-- BIỂU ĐỒ -->
+            <!--<ScottPlot:WpfPlot x:Name="wpfPlot" Grid.Column="1" Margin="10"/>-->
+            <oxy:PlotView x:Name="wpfPlot" Grid.Column="1" Margin="10"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,1045 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CryptoExchange.Net</name>
+    </assembly>
+    <members>
+        <member name="T:CryptoExchange.Net.Attributes.JsonConversionAttribute">
+            <summary>
+            Used for conversion in ArrayConverter
+            </summary>
+        </member>
+        <member name="T:CryptoExchange.Net.Attributes.MapAttribute">
+            <summary>
+            Map a enum entry to string values
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Attributes.MapAttribute.Values">
+            <summary>
+            Values mapping to the enum entry
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Attributes.MapAttribute.#ctor(System.String[])">
+            <summary>
+            ctor
+            </summary>
+            <param name="maps"></param>
+        </member>
+        <member name="T:CryptoExchange.Net.Authentication.ApiCredentials">
+            <summary>
+            Api credentials, used to sign requests accessing private endpoints
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Authentication.ApiCredentials.Key">
+            <summary>
+            The api key / label to authenticate requests
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Authentication.ApiCredentials.Secret">
+            <summary>
+            The api secret or private key to authenticate requests
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Authentication.ApiCredentials.Pass">
+            <summary>
+            The api passphrase. Not needed on all exchanges
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Authentication.ApiCredentials.CredentialType">
+            <summary>
+            Type of the credentials
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.ApiCredentials.#ctor(System.String,System.String,System.String,CryptoExchange.Net.Authentication.ApiCredentialsType)">
+            <summary>
+            Create Api credentials providing an api key and secret for authentication
+            </summary>
+            <param name="key">The api key / label used for identification</param>
+            <param name="secret">The api secret or private key used for signing</param>
+            <param name="pass">The api pass for the key. Not always needed</param>
+            <param name="credentialType">The type of credentials</param>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.ApiCredentials.Copy">
+            <summary>
+            Copy the credentials
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CryptoExchange.Net.Authentication.ApiCredentialsType">
+            <summary>
+            Credentials type
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Authentication.ApiCredentialsType.Hmac">
+            <summary>
+            Hmac keys credentials
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Authentication.ApiCredentialsType.RsaXml">
+            <summary>
+            Rsa keys credentials in xml format
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Authentication.ApiCredentialsType.RsaPem">
+            <summary>
+            Rsa keys credentials in pem/base64 format. Only available for .NetStandard 2.1 and up, use xml format for lower.
+            </summary>
+        </member>
+        <member name="T:CryptoExchange.Net.Authentication.AuthenticationProvider">
+            <summary>
+            Base class for authentication providers
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Authentication.AuthenticationProvider._credentials">
+            <summary>
+            Provided credentials
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Authentication.AuthenticationProvider._sBytes">
+            <summary>
+            Byte representation of the secret
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Authentication.AuthenticationProvider.ApiKey">
+            <summary>
+            Get the API key of the current credentials
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Authentication.AuthenticationProvider.Pass">
+            <summary>
+            Get the Passphrase of the current credentials
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.#ctor(CryptoExchange.Net.Authentication.ApiCredentials)">
+            <summary>
+            ctor
+            </summary>
+            <param name="credentials"></param>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.ProcessRequest(CryptoExchange.Net.Clients.RestApiClient,CryptoExchange.Net.Objects.RestRequestConfiguration)">
+            <summary>
+            Authenticate a request
+            </summary>
+            <param name="apiClient">The Api client sending the request</param>
+            <param name="requestConfig">The request configuration</param>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA256Bytes(System.String)">
+            <summary>
+            SHA256 sign the data and return the bytes
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA256Bytes(System.Byte[])">
+            <summary>
+            SHA256 sign the data and return the bytes
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA256(System.String,System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            SHA256 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA256(System.Byte[],System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            SHA256 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA384(System.String,System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            SHA384 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA384(System.Byte[],System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            SHA384 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA384Bytes(System.String)">
+            <summary>
+            SHA384 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA384Bytes(System.Byte[])">
+            <summary>
+            SHA384 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA512(System.String,System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            SHA512 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA512(System.Byte[],System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            SHA512 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA512Bytes(System.String)">
+            <summary>
+            SHA512 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignSHA512Bytes(System.Byte[])">
+            <summary>
+            SHA512 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignMD5(System.String,System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            MD5 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignMD5(System.Byte[],System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            MD5 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignMD5Bytes(System.String)">
+            <summary>
+            MD5 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignHMACSHA256(System.String,System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            HMACSHA256 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignHMACSHA256(System.Byte[],System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            HMACSHA256 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignHMACSHA384(System.String,System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            HMACSHA384 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignHMACSHA384(System.Byte[],System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            HMACSHA384 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignHMACSHA512(System.String,System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            HMACSHA512 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignHMACSHA512(System.Byte[],System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            HMACSHA512 sign the data and return the hash
+            </summary>
+            <param name="data">Data to sign</param>
+            <param name="outputType">String type</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignRSASHA256(System.Byte[],System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            SHA256 sign the data
+            </summary>
+            <param name="data"></param>
+            <param name="outputType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignRSASHA384(System.Byte[],System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            SHA384 sign the data
+            </summary>
+            <param name="data"></param>
+            <param name="outputType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.SignRSASHA512(System.Byte[],System.Nullable{CryptoExchange.Net.Authentication.SignOutputType})">
+            <summary>
+            SHA512 sign the data
+            </summary>
+            <param name="data"></param>
+            <param name="outputType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.BytesToHexString(System.Byte[])">
+            <summary>
+            Convert byte array to hex string
+            </summary>
+            <param name="buff"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.BytesToBase64String(System.Byte[])">
+            <summary>
+            Convert byte array to base64 string
+            </summary>
+            <param name="buff"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.GetTimestamp(CryptoExchange.Net.Clients.RestApiClient)">
+            <summary>
+            Get current timestamp including the time sync offset from the api client
+            </summary>
+            <param name="apiClient"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.GetMillisecondTimestamp(CryptoExchange.Net.Clients.RestApiClient)">
+            <summary>
+            Get millisecond timestamp as a string including the time sync offset from the api client
+            </summary>
+            <param name="apiClient"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.GetMillisecondTimestampLong(CryptoExchange.Net.Clients.RestApiClient)">
+            <summary>
+            Get millisecond timestamp as a long including the time sync offset from the api client
+            </summary>
+            <param name="apiClient"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider.GetSerializedBody(CryptoExchange.Net.Interfaces.IMessageSerializer,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Return the serialized request body
+            </summary>
+            <param name="serializer"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CryptoExchange.Net.Authentication.AuthenticationProvider`1">
+            <inheritdoc />
+        </member>
+        <member name="P:CryptoExchange.Net.Authentication.AuthenticationProvider`1._credentials">
+            <inheritdoc />
+        </member>
+        <member name="M:CryptoExchange.Net.Authentication.AuthenticationProvider`1.#ctor(`0)">
+            <summary>
+            ctor
+            </summary>
+            <param name="credentials"></param>
+        </member>
+        <member name="T:CryptoExchange.Net.Authentication.SignOutputType">
+            <summary>
+            Output string type
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Authentication.SignOutputType.Hex">
+            <summary>
+            Hex string
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Authentication.SignOutputType.Base64">
+            <summary>
+            Base64 string
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Caching.MemoryCache.Add(System.String,System.Object)">
+            <summary>
+            Add a new cache entry. Will override an existing entry if it already exists
+            </summary>
+            <param name="key">The key identifier</param>
+            <param name="value">Cache value</param>
+        </member>
+        <member name="M:CryptoExchange.Net.Caching.MemoryCache.Get(System.String,System.TimeSpan)">
+            <summary>
+            Get a cached value
+            </summary>
+            <param name="key">The key identifier</param>
+            <param name="maxAge">The max age of the cached entry</param>
+            <returns>Cached value if it was in cache</returns>
+        </member>
+        <member name="T:CryptoExchange.Net.Clients.BaseApiClient">
+            <summary>
+            Base API for all API clients
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.BaseApiClient._logger">
+            <summary>
+            Logger
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.BaseApiClient._disposing">
+            <summary>
+            If we are disposing
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseApiClient.AuthenticationProvider">
+            <summary>
+            The authentication provider for this API client. (null if no credentials are set)
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseApiClient.BaseAddress">
+            <summary>
+            The environment this client communicates to
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseApiClient.OutputOriginalData">
+            <summary>
+            Output the original string data along with the deserialized object
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseApiClient.Authenticated">
+            <inheritdoc />
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseApiClient.ApiCredentials">
+            <inheritdoc />
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseApiClient.ApiOptions">
+            <summary>
+            Api options
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseApiClient.ClientOptions">
+            <summary>
+            Client Options
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseApiClient.ErrorMapping">
+            <summary>
+            Mapping of a response code to known error types
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseApiClient.#ctor(Microsoft.Extensions.Logging.ILogger,System.Boolean,CryptoExchange.Net.Authentication.ApiCredentials,System.String,CryptoExchange.Net.Objects.Options.ExchangeOptions,CryptoExchange.Net.Objects.Options.ApiOptions)">
+            <summary>
+            ctor
+            </summary>
+            <param name="logger">Logger</param>
+            <param name="outputOriginalData">Should data from this client include the original data in the call result</param>
+            <param name="baseAddress">Base address for this API client</param>
+            <param name="apiCredentials">Api credentials</param>
+            <param name="clientOptions">Client options</param>
+            <param name="apiOptions">Api options</param>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseApiClient.CreateAuthenticationProvider(CryptoExchange.Net.Authentication.ApiCredentials)">
+            <summary>
+            Create an AuthenticationProvider implementation instance based on the provided credentials
+            </summary>
+            <param name="credentials"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseApiClient.FormatSymbol(System.String,System.String,CryptoExchange.Net.SharedApis.TradingMode,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseApiClient.GetErrorInfo(System.Int32,System.String)">
+            <summary>
+            Get error info for a response code
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseApiClient.GetErrorInfo(System.String,System.String)">
+            <summary>
+            Get error info for a response code
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseApiClient.SetApiCredentials``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseApiClient.SetOptions``1(CryptoExchange.Net.Objects.Options.UpdateOptions{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseApiClient.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="T:CryptoExchange.Net.Clients.BaseClient">
+            <summary>
+            The base for all clients, websocket client and rest client
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseClient.CryptoExchangeLibVersion">
+            <summary>
+            Version of the CryptoExchange.Net base library
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseClient.ExchangeLibVersion">
+            <summary>
+            Version of the client implementation
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseClient.Exchange">
+            <summary>
+            The name of the API the client is for
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseClient.ApiClients">
+            <summary>
+            Api clients in this client
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.BaseClient._logger">
+            <summary>
+            The log object
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseClient.ClientOptions">
+            <summary>
+            Provided client options
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseClient.#ctor(Microsoft.Extensions.Logging.ILoggerFactory,System.String)">
+            <summary>
+            ctor
+            </summary>
+            <param name="logger">Logger</param>
+            <param name="exchange">The name of the exchange this client is for</param>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseClient.Initialize(CryptoExchange.Net.Objects.Options.ExchangeOptions)">
+            <summary>
+            Initialize the client with the specified options
+            </summary>
+            <param name="options"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseClient.SetApiCredentials``1(``0)">
+            <summary>
+            Set the API credentials for this client. All Api clients in this client will use the new credentials, regardless of earlier set options.
+            </summary>
+            <param name="credentials">The credentials to set</param>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseClient.AddApiClient``1(``0)">
+            <summary>
+            Register an API client
+            </summary>
+            <param name="apiClient">The client</param>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseClient.ApplyOptionsDelegate``1(System.Action{``0})">
+            <summary>
+            Apply the options delegate to a new options instance
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseClient.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="T:CryptoExchange.Net.Clients.BaseRestClient">
+            <summary>
+            Base rest client
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseRestClient.TotalRequestsMade">
+            <inheritdoc />
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseRestClient.#ctor(Microsoft.Extensions.Logging.ILoggerFactory,System.String)">
+            <summary>
+            ctor
+            </summary>
+            <param name="loggerFactory">Logger factory</param>
+            <param name="name">The name of the API this client is for</param>
+        </member>
+        <member name="T:CryptoExchange.Net.Clients.BaseSocketClient">
+            <summary>
+            Base for socket client implementations
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.BaseSocketClient._disposing">
+            <summary>
+            If client is disposing
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseSocketClient.CurrentConnections">
+            <inheritdoc />
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseSocketClient.CurrentSubscriptions">
+            <inheritdoc />
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.BaseSocketClient.IncomingKbps">
+            <inheritdoc />
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseSocketClient.#ctor(Microsoft.Extensions.Logging.ILoggerFactory,System.String)">
+            <summary>
+            ctor
+            </summary>
+            <param name="loggerFactory">Logger factory</param>
+            <param name="name">The name of the exchange this client is for</param>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseSocketClient.UnsubscribeAsync(System.Int32)">
+            <summary>
+            Unsubscribe an update subscription
+            </summary>
+            <param name="subscriptionId">The id of the subscription to unsubscribe</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseSocketClient.UnsubscribeAsync(CryptoExchange.Net.Objects.Sockets.UpdateSubscription)">
+            <summary>
+            Unsubscribe an update subscription
+            </summary>
+            <param name="subscription">The subscription to unsubscribe</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseSocketClient.UnsubscribeAllAsync">
+            <summary>
+            Unsubscribe all subscriptions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseSocketClient.ReconnectAsync">
+            <summary>
+            Reconnect all connections
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseSocketClient.GetSubscriptionsState">
+            <summary>
+            Log the current state of connections and subscriptions
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.BaseSocketClient.GetSocketApiClientStates">
+            <summary>
+            Returns the state of all socket api clients
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CryptoExchange.Net.Clients.CryptoBaseClient">
+            <summary>
+            Base crypto client
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.CryptoBaseClient._serviceProvider">
+            <summary>
+            Service provider
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.CryptoBaseClient.#ctor">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.CryptoBaseClient.#ctor(System.IServiceProvider)">
+            <summary>
+            ctor
+            </summary>
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.CryptoBaseClient.TryGet``1(System.Func{``0})">
+            <summary>
+            Try get a client by type for the service collection
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.CryptoBaseClient.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="T:CryptoExchange.Net.Clients.CryptoRestClient">
+            <inheritdoc />
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.CryptoRestClient.#ctor">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.CryptoRestClient.#ctor(System.IServiceProvider)">
+            <summary>
+            ctor
+            </summary>
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="T:CryptoExchange.Net.Clients.CryptoSocketClient">
+            <inheritdoc />
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.CryptoSocketClient.#ctor">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.CryptoSocketClient.#ctor(System.IServiceProvider)">
+            <summary>
+            ctor
+            </summary>
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="T:CryptoExchange.Net.Clients.RestApiClient">
+            <summary>
+            Base rest API client for interacting with a REST API
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.RestApiClient.RequestFactory">
+            <inheritdoc />
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.GetTimeSyncInfo">
+            <inheritdoc />
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.GetTimeOffset">
+            <inheritdoc />
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.RestApiClient.TotalRequestsMade">
+            <inheritdoc />
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.RestApiClient.RequestBodyFormat">
+            <summary>
+            Request body content type
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.RestApiClient.ArraySerialization">
+            <summary>
+            How to serialize array parameters when making requests
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.RestApiClient.RequestBodyEmptyContent">
+            <summary>
+            What request body should be set when no data is send (only used in combination with postParametersPosition.InBody)
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.RestApiClient.StandardRequestHeaders">
+            <summary>
+            Request headers to be sent with each request
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.RestApiClient.OrderParameters">
+            <summary>
+            Whether parameters need to be ordered
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.RestApiClient.ParameterOrderComparer">
+            <summary>
+            Parameter order comparer
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.RestApiClient.ParameterPositions">
+            <summary>
+            Where to put the parameters for requests with different Http methods
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.RestApiClient.ClientOptions">
+            <inheritdoc />
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.RestApiClient.ApiOptions">
+            <inheritdoc />
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.RestApiClient._cache">
+            <summary>
+            Memory cache
+            </summary>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.#ctor(Microsoft.Extensions.Logging.ILogger,System.Net.Http.HttpClient,System.String,CryptoExchange.Net.Objects.Options.RestExchangeOptions,CryptoExchange.Net.Objects.Options.RestApiOptions)">
+            <summary>
+            ctor
+            </summary>
+            <param name="logger">Logger</param>
+            <param name="httpClient">HttpClient to use</param>
+            <param name="baseAddress">Base address for this API client</param>
+            <param name="options">The base client options</param>
+            <param name="apiOptions">The Api client options</param>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.CreateAccessor">
+            <summary>
+            Create a message accessor instance
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.CreateSerializer">
+            <summary>
+            Create a serializer instance
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.SendAsync(System.String,CryptoExchange.Net.Objects.RequestDefinition,CryptoExchange.Net.Objects.ParameterCollection,System.Threading.CancellationToken,System.Collections.Generic.Dictionary{System.String,System.String},System.Nullable{System.Int32})">
+            <summary>
+            Send a request to the base address based on the request definition
+            </summary>
+            <param name="baseAddress">Host and schema</param>
+            <param name="definition">Request definition</param>
+            <param name="parameters">Request parameters</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <param name="additionalHeaders">Additional headers for this request</param>
+            <param name="weight">Override the request weight for this request definition, for example when the weight depends on the parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.SendAsync``1(System.String,CryptoExchange.Net.Objects.RequestDefinition,CryptoExchange.Net.Objects.ParameterCollection,System.Threading.CancellationToken,System.Collections.Generic.Dictionary{System.String,System.String},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <summary>
+            Send a request to the base address based on the request definition
+            </summary>
+            <typeparam name="T">Response type</typeparam>
+            <param name="baseAddress">Host and schema</param>
+            <param name="definition">Request definition</param>
+            <param name="parameters">Request parameters</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <param name="additionalHeaders">Additional headers for this request</param>
+            <param name="weight">Override the request weight for this request definition, for example when the weight depends on the parameters</param>
+            <param name="weightSingleLimiter">Specify the weight to apply to the individual rate limit guard for this request</param>
+            <param name="rateLimitKeySuffix">An additional optional suffix for the key selector. Can be used to make rate limiting work based on parameters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.SendAsync``1(System.String,CryptoExchange.Net.Objects.RequestDefinition,CryptoExchange.Net.Objects.ParameterCollection,CryptoExchange.Net.Objects.ParameterCollection,System.Threading.CancellationToken,System.Collections.Generic.Dictionary{System.String,System.String},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <summary>
+            Send a request to the base address based on the request definition
+            </summary>
+            <typeparam name="T">Response type</typeparam>
+            <param name="baseAddress">Host and schema</param>
+            <param name="definition">Request definition</param>
+            <param name="uriParameters">Request query parameters</param>
+            <param name="bodyParameters">Request body parameters</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <param name="additionalHeaders">Additional headers for this request</param>
+            <param name="weight">Override the request weight for this request definition, for example when the weight depends on the parameters</param>
+            <param name="weightSingleLimiter">Specify the weight to apply to the individual rate limit guard for this request</param>
+            <param name="rateLimitKeySuffix">An additional optional suffix for the key selector. Can be used to make rate limiting work based on parameters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.PrepareAsync(System.Int32,System.String,CryptoExchange.Net.Objects.RequestDefinition,System.Threading.CancellationToken,System.Collections.Generic.Dictionary{System.String,System.String},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <summary>
+            Prepare before sending a request. Sync time between client and server and check rate limits
+            </summary>
+            <param name="requestId">Request id</param>
+            <param name="baseAddress">Host and schema</param>
+            <param name="definition">Request definition</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <param name="additionalHeaders">Additional headers for this request</param>
+            <param name="weight">Override the request weight for this request</param>
+            <param name="weightSingleLimiter">Specify the weight to apply to the individual rate limit guard for this request</param>
+            <param name="rateLimitKeySuffix">An additional optional suffix for the key selector</param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.CreateRequest(System.Int32,System.String,CryptoExchange.Net.Objects.RequestDefinition,CryptoExchange.Net.Objects.ParameterCollection,CryptoExchange.Net.Objects.ParameterCollection,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Creates a request object
+            </summary>
+            <param name="requestId">Id of the request</param>
+            <param name="baseAddress">Host and schema</param>
+            <param name="definition">Request definition</param>
+            <param name="uriParameters">The query parameters of the request</param>
+            <param name="bodyParameters">The body parameters of the request</param>
+            <param name="additionalHeaders">Additional headers to send with the request</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.GetResponseAsync``1(CryptoExchange.Net.Interfaces.IRequest,CryptoExchange.Net.RateLimiting.Interfaces.IRateLimitGate,System.Threading.CancellationToken)">
+            <summary>
+            Executes the request and returns the result deserialized into the type parameter class
+            </summary>
+            <param name="request">The request object to execute</param>
+            <param name="gate">The ratelimit gate used</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.TryParseError(System.Collections.Generic.KeyValuePair{System.String,System.String[]}[],CryptoExchange.Net.Interfaces.IMessageAccessor)">
+            <summary>
+            Can be used to parse an error even though response status indicates success. Some apis always return 200 OK, even though there is an error.
+            This method will be called for each response to be able to check if the response is an error or not.
+            If the response is an error this method should return the parsed error, else it should return null
+            </summary>
+            <param name="accessor">Data accessor</param>
+            <param name="responseHeaders">The response headers</param>
+            <returns>Null if not an error, Error otherwise</returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.ShouldRetryRequestAsync``1(CryptoExchange.Net.RateLimiting.Interfaces.IRateLimitGate,CryptoExchange.Net.Objects.WebCallResult{``0},System.Int32)">
+            <summary>
+            Can be used to indicate that a request should be retried. Defaults to false. Make sure to retry a max number of times (based on the the tries parameter) or the request will retry forever.
+            Note that this is always called; even when the request might be successful
+            </summary>
+            <typeparam name="T">WebCallResult type parameter</typeparam>
+            <param name="gate">The rate limit gate the call used</param>
+            <param name="callResult">The result of the call</param>
+            <param name="tries">The current try number</param>
+            <returns>True if call should retry, false if the call should return</returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.WriteParamBody(CryptoExchange.Net.Interfaces.IRequest,System.Collections.Generic.IDictionary{System.String,System.Object},System.String)">
+            <summary>
+            Writes the parameters of the request to the request object body
+            </summary>
+            <param name="request">The request to set the parameters on</param>
+            <param name="parameters">The parameters to set</param>
+            <param name="contentType">The content type of the data</param>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.ParseErrorResponse(System.Int32,System.Collections.Generic.KeyValuePair{System.String,System.String[]}[],CryptoExchange.Net.Interfaces.IMessageAccessor,System.Exception)">
+            <summary>
+            Parse an error response from the server. Only used when server returns a status other than Success(200) or ratelimit error (429 or 418)
+            </summary>
+            <param name="httpStatusCode">The response status code</param>
+            <param name="responseHeaders">The response headers</param>
+            <param name="accessor">Data accessor</param>
+            <param name="exception">Exception</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.ParseRateLimitResponse(System.Int32,System.Collections.Generic.KeyValuePair{System.String,System.String[]}[],CryptoExchange.Net.Interfaces.IMessageAccessor)">
+            <summary>
+            Parse a rate limit error response from the server. Only used when server returns http status 429 or 418
+            </summary>
+            <param name="httpStatusCode">The response status code</param>
+            <param name="responseHeaders">The response headers</param>
+            <param name="accessor">Data accessor</param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.CreateParameterDictionary(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Create the parameter IDictionary
+            </summary>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.GetServerTimestampAsync">
+            <summary>
+            Retrieve the server time for the purpose of syncing time between client and server to prevent authentication issues
+            </summary>
+            <returns>Server time</returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.RestApiClient.SetOptions``1(CryptoExchange.Net.Objects.Options.UpdateOptions{``0})">
+            <inheritdoc />
+        </member>
+        <member name="T:CryptoExchange.Net.Clients.SocketApiClient">
+            <summary>
+            Base socket API client for interaction with a websocket API
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.SocketFactory">
+            <inheritdoc/>
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.SocketApiClient.socketConnections">
+            <summary>
+            List of socket connections currently connecting/connected
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.SocketApiClient.semaphoreSlim">
+            <summary>
+            Semaphore used while creating sockets
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.KeepAliveInterval">
+            <summary>
+            Keep alive interval for websocket connection
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.KeepAliveTimeout">
+            <summary>
+            Keep alive timeout for websocket connection
+            </summary>
+        </member>
+        <member name="F:CryptoExchange.Net.Clients.SocketApiClient.systemSubscriptions">
+            <summary>
+            Handlers for data from the socket which doesn't need to be forwarded to the caller. Ping or welcome messages for example.
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.UnhandledMessageExpected">
+            <summary>
+            If a message is received on the socket which is not handled by a handler this boolean determines whether this logs an error message
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.RateLimiter">
+            <summary>
+            The rate limiters 
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.MessageSendSizeLimit">
+            <summary>
+            The max size a websocket message size can be
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.PeriodicTaskRegistrations">
+            <summary>
+            Periodic task registrations
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.DedicatedConnectionConfigs">
+            <summary>
+            List of address to keep an alive connection to
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.AllowTopicsOnTheSameConnection">
+            <summary>
+            Whether to allow multiple subscriptions with the same topic on the same connection
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.ProcessUnparsableMessages">
+            <summary>
+            Whether to continue processing and forward unparsable messages to handlers
+            </summary>
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.IncomingKbps">
+            <inheritdoc />
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.CurrentConnections">
+            <inheritdoc />
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.CurrentSubscriptions">
+            <inheritdoc />
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.ClientOptions">
+            <inheritdoc />
+        </member>
+        <member name="P:CryptoExchange.Net.Clients.SocketApiClient.ApiOptions">
+            <inheritdoc />
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.SocketApiClient.#ctor(Microsoft.Extensions.Logging.ILogger,System.String,CryptoExchange.Net.Objects.Options.SocketExchangeOptions,CryptoExchange.Net.Objects.Options.SocketApiOptions)">
+            <summary>
+            ctor
+            </summary>
+            <param name="logger">log</param>
+            <param name="options">Client options</param>
+            <param name="baseAddress">Base address for this API client</param>
+            <param name="apiOptions">The Api client options</param>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.SocketApiClient.CreateAccessor(System.Net.WebSockets.WebSocketMessageType)">
+            <summary>
+            Create a message accessor instance
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.SocketApiClient.CreateSerializer">
+            <summary>
+            Create a serializer instance
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.SocketApiClient.SetDedicatedConnection(System.String,System.Boolean)">
+            <summary>
+            Keep an open connection to this url
+            </summary>
+            <param name="url"></param>
+            <param name="auth"></param>
+        </member>
+        <member name="M:CryptoExchange.Net.Clients.SocketApiClient.RegisterPeriodicQuery(System.String,System.TimeSpan,System.Func{CryptoExchange.Net.Sockets.SocketConnection,CryptoExchange.Net.Sockets.Query},System.Action{CryptoExchange.Net.Sockets.SocketConnection,CryptoExchange.Net.Objects.CallResult})">
+            <summary>
+            Add a query to periodically send on each connection
+            </summary>
+            <param name="identifier"></param>
+            <param name="interval"></param>
+            <param name="queryDelegate"></param>
+            <param name="callback">
