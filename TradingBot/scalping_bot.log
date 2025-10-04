@@ -1,0 +1,34 @@
+2025-09-30 17:27:09,918 - __main__ - ERROR - Error in scalping analysis: module 'ta.volume' has no attribute 'VolumeSMAIndicator'
+2025-09-30 17:27:09,918 - __main__ - INFO - No scalping signal generated
+2025-09-30 17:28:11,735 - __main__ - ERROR - Error in scalping analysis: module 'ta.volume' has no attribute 'VolumeSMAIndicator'
+2025-09-30 17:28:11,736 - __main__ - INFO - No scalping signal generated
+2025-09-30 17:35:21,956 - __main__ - ERROR - Error in scalping analysis: module 'ta.volume' has no attribute 'VolumeSMAIndicator'
+2025-09-30 17:35:21,957 - __main__ - INFO - No scalping signal generated
+2025-09-30 17:40:22,227 - __main__ - ERROR - Error in scalping analysis: module 'ta.volume' has no attribute 'VolumeSMAIndicator'
+2025-09-30 17:40:22,228 - __main__ - INFO - No scalping signal generated
+2025-09-30 17:45:22,484 - __main__ - ERROR - Error in scalping analysis: module 'ta.volume' has no attribute 'VolumeSMAIndicator'
+2025-09-30 17:45:22,485 - __main__ - INFO - No scalping signal generated
+2025-09-30 18:16:09,992 - __main__ - INFO - Bitcoin Scalping Bot initialized (5m timeframe)
+2025-09-30 18:16:09,992 - __main__ - INFO - ⚡ Running single scalping analysis...
+2025-09-30 18:16:11,913 - __main__ - INFO - No scalping signal generated
+2025-09-30 18:16:11,913 - __main__ - INFO - ✅ Single scalping analysis completed
+2025-09-30 18:16:26,082 - __main__ - INFO - Bitcoin Scalping Bot initialized (5m timeframe)
+2025-09-30 18:16:26,082 - __main__ - INFO - ⚡ Starting Bitcoin Scalping Bot...
+2025-09-30 18:16:29,228 - __main__ - INFO - Starting scalping analysis cycle...
+2025-09-30 18:16:29,322 - __main__ - INFO - No scalping signal generated
+2025-09-30 18:16:29,322 - __main__ - INFO - Scalping analysis cycle completed
+2025-09-30 18:16:29,322 - __main__ - INFO - ✅ Scalping Bot started successfully. Monitoring Bitcoin every 5 minutes...
+2025-09-30 18:21:29,422 - __main__ - INFO - Starting scalping analysis cycle...
+2025-09-30 18:21:29,590 - __main__ - INFO - No scalping signal generated
+2025-09-30 18:21:29,590 - __main__ - INFO - Scalping analysis cycle completed
+2025-09-30 18:26:29,669 - __main__ - INFO - Starting scalping analysis cycle...
+2025-09-30 18:26:29,841 - __main__ - INFO - No scalping signal generated
+2025-09-30 18:26:29,841 - __main__ - INFO - Scalping analysis cycle completed
+2025-09-30 18:31:29,927 - __main__ - INFO - Starting scalping analysis cycle...
+2025-09-30 18:31:30,101 - __main__ - INFO - No scalping signal generated
+2025-09-30 18:31:30,101 - __main__ - INFO - Scalping analysis cycle completed
+2025-09-30 18:36:30,174 - __main__ - INFO - Starting scalping analysis cycle...
+2025-09-30 18:36:30,346 - __main__ - INFO - No scalping signal generated
+2025-09-30 18:36:30,346 - __main__ - INFO - Scalping analysis cycle completed
+2025-09-30 18:37:19,359 - __main__ - INFO - 🛑 Scalping Bot stopped by user
+2025-09-30 18:37:19,359 - __main__ - INFO - 🛑 Bitcoin Scalping Bot stopped

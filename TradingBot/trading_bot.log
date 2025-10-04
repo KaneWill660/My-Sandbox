@@ -1,0 +1,2 @@
+2025-09-30 17:21:06,059 - __main__ - ERROR - Error in fetch_and_analyze: module 'ta.volume' has no attribute 'VolumeSMAIndicator'
+2025-09-30 17:21:06,059 - __main__ - INFO - No trading signal generated
