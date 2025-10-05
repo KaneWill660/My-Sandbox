@@ -30622,3 +30622,1556 @@ Traceback (most recent call last):
 ConnectionError: Cannot send requests while disconnected
 2025-10-05 09:09:22,461 - INFO - Not disconnecting (already have no connection)
 2025-10-05 09:09:22,461 - INFO - 📱 Disconnected from Telegram
+2025-10-05 09:14:31,564 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 09:14:31,611 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:14:32,001 - INFO - Successfully connected to Telegram
+2025-10-05 09:14:32,001 - INFO - 🤖 Bot is ready! Send /filter or /filter_contract message to start...
+2025-10-05 09:14:32,002 - INFO - 📝 Format: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]
+2025-10-05 09:14:32,002 - INFO - 🔗 Format: /filter_contract <group_username> [target_user] [yyyy.mm.dd] [limit]
+2025-10-05 09:14:32,002 - INFO - 💡 Example: /filter @mygroup username 2024.12.15 5000
+2025-10-05 09:14:32,002 - INFO - 💡 Example: /filter_contract @mygroup username 2024.12.15
+2025-10-05 09:14:32,002 - INFO - 📅 Default: No date = today's messages only (UTC+7)
+2025-10-05 09:14:32,002 - INFO - 🧪 Commands: /test (test bot), /time (show time), /timezone (explain timezone), /testmsg (test messages), /testyesterday (test yesterday), /testuser (test username), /testrecent (test recent), /testdate (test date), /testcontract (test contract API), /listusers (list users), /debug (debug mode), /stop (stop bot)
+2025-10-05 09:14:32,002 - INFO - 🛑 Commands: /stop or /quit to stop bot, Ctrl+C to force stop
+2025-10-05 09:18:59,436 - INFO - 🛑 Stop command received from user
+2025-10-05 09:19:02,455 - INFO - Disconnecting from 91.108.56.152:443/TcpFull...
+2025-10-05 09:19:02,455 - INFO - Disconnection from 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:19:02,455 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:19:02,455 - ERROR - Error handling trigger message: 
+2025-10-05 09:19:02,455 - ERROR - Unhandled exception on trigger_handler
+Traceback (most recent call last):
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 735, in handle_trigger_message
+    await self.client.disconnect()
+concurrent.futures._base.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python37\lib\site-packages\telethon\client\updates.py", line 574, in _dispatch_update
+    await callback(event)
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1171, in trigger_handler
+    # Xử lý lệnh filter_contract
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1157, in handle_trigger_message
+    await event.reply(f"❌ Lỗi: {str(e)}")
+  File "C:\Python\Python37\lib\site-packages\telethon\tl\custom\message.py", line 830, in reply
+    await self.get_input_chat(), *args, **kwargs)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\messages.py", line 926, in send_message
+    result = await self(request)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 72, in _call
+    future = sender.send(request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\network\mtprotosender.py", line 179, in send
+    raise ConnectionError('Cannot send requests while disconnected')
+ConnectionError: Cannot send requests while disconnected
+2025-10-05 09:19:02,471 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:19:02,487 - INFO - 📱 Disconnected from Telegram
+2025-10-05 09:19:06,237 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 09:19:06,284 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:19:06,674 - INFO - Successfully connected to Telegram
+2025-10-05 09:19:06,674 - INFO - 🤖 Bot is ready! Send /filter or /filter_contract message to start...
+2025-10-05 09:19:06,674 - INFO - 📝 Format: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]
+2025-10-05 09:19:06,674 - INFO - 🔗 Format: /filter_contract <group_username> [target_user] [yyyy.mm.dd] [limit]
+2025-10-05 09:19:06,674 - INFO - 💡 Example: /filter @mygroup username 2024.12.15 5000
+2025-10-05 09:19:06,674 - INFO - 💡 Example: /filter_contract @mygroup username 2024.12.15
+2025-10-05 09:19:06,674 - INFO - 📅 Default: No date = today's messages only (UTC+7)
+2025-10-05 09:19:06,674 - INFO - 🧪 Commands: /test (test bot), /time (show time), /timezone (explain timezone), /testmsg (test messages), /testyesterday (test yesterday), /testuser (test username), /testrecent (test recent), /testdate (test date), /testcontract (test contract API), /listusers (list users), /debug (debug mode), /stop (stop bot)
+2025-10-05 09:19:06,674 - INFO - 🛑 Commands: /stop or /quit to stop bot, Ctrl+C to force stop
+2025-10-05 09:22:10,446 - INFO - 🛑 Stop command received from user
+2025-10-05 09:22:13,454 - INFO - Disconnecting from 91.108.56.152:443/TcpFull...
+2025-10-05 09:22:13,455 - INFO - Disconnection from 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:22:13,456 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:22:13,456 - ERROR - Error handling trigger message: 
+2025-10-05 09:22:13,456 - ERROR - Unhandled exception on trigger_handler
+Traceback (most recent call last):
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 735, in handle_trigger_message
+    await self.client.disconnect()
+concurrent.futures._base.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python37\lib\site-packages\telethon\client\updates.py", line 574, in _dispatch_update
+    await callback(event)
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1347, in trigger_handler
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1157, in handle_trigger_message
+  File "C:\Python\Python37\lib\site-packages\telethon\tl\custom\message.py", line 830, in reply
+    await self.get_input_chat(), *args, **kwargs)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\messages.py", line 926, in send_message
+    result = await self(request)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 72, in _call
+    future = sender.send(request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\network\mtprotosender.py", line 179, in send
+    raise ConnectionError('Cannot send requests while disconnected')
+ConnectionError: Cannot send requests while disconnected
+2025-10-05 09:22:13,480 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:22:13,491 - INFO - 📱 Disconnected from Telegram
+2025-10-05 09:22:16,552 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 09:22:16,593 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:22:16,928 - INFO - Successfully connected to Telegram
+2025-10-05 09:22:16,928 - INFO - 🤖 Bot is ready! Send /filter or /filter_contract message to start...
+2025-10-05 09:22:16,928 - INFO - 📝 Format: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]
+2025-10-05 09:22:16,929 - INFO - 🔗 Format: /filter_contract <group_username> [target_user] [yyyy.mm.dd] [limit]
+2025-10-05 09:22:16,929 - INFO - 💡 Example: /filter @mygroup username 2024.12.15 5000
+2025-10-05 09:22:16,929 - INFO - 💡 Example: /filter_contract @mygroup username 2024.12.15
+2025-10-05 09:22:16,929 - INFO - 📅 Default: No date = today's messages only (UTC+7)
+2025-10-05 09:22:16,929 - INFO - 🧪 Commands: /test (test bot), /time (show time), /timezone (explain timezone), /testmsg (test messages), /testyesterday (test yesterday), /testuser (test username), /testrecent (test recent), /testdate (test date), /testcontract (test contract API), /getuserid (get user ID), /listusers (list users), /debug (debug mode), /stop (stop bot)
+2025-10-05 09:22:16,929 - INFO - 🛑 Commands: /stop or /quit to stop bot, Ctrl+C to force stop
+2025-10-05 09:22:28,713 - INFO - 📨 Message from User ID: 1895962392, Username: @No username, Name: No first name
+2025-10-05 09:22:28,713 - INFO - 📝 Message text: /getuserid
+2025-10-05 09:22:43,187 - INFO - 📨 Message from User ID: 6461312306, Username: @None, Name: 19
+2025-10-05 09:22:43,188 - INFO - 📝 Message text: EbWx89dZ7cMceY6CAyeK13au7FD4eGata6KV2AyvBLV
+2025-10-05 09:22:43,743 - INFO - 📨 Message from User ID: 936956659, Username: @No username, Name: No first name
+2025-10-05 09:22:43,743 - INFO - 📝 Message text: fdfdf
+2025-10-05 09:23:33,514 - INFO - 📨 Message from User ID: 936956659, Username: @No username, Name: No first name
+2025-10-05 09:23:33,515 - INFO - 📝 Message text: aaaaaaaaaaa
+2025-10-05 09:23:52,512 - INFO - 📨 Message from User ID: 6461312306, Username: @None, Name: 19
+2025-10-05 09:23:52,512 - INFO - 📝 Message text: Tụe dưng bơm
+2025-10-05 09:24:14,113 - INFO - 📨 Message from User ID: 6461312306, Username: @None, Name: 19
+2025-10-05 09:24:14,113 - INFO - 📝 Message text: 
+2025-10-05 09:24:31,211 - INFO - 📨 Message from User ID: 6461312306, Username: @None, Name: 19
+2025-10-05 09:24:31,211 - INFO - 📝 Message text: Nếu đúng có khi bơm tug
+2025-10-05 09:26:49,521 - INFO - 📨 Message from User ID: 777000, Username: @No username, Name: No first name
+2025-10-05 09:26:49,522 - INFO - 📝 Message text: **Web login code.** Dear Hoàng Phong, we received a request from your account to log in on my.telegram.org. This is your login code:
+`uquruSrdd34`
+
+Do **not** give this code to anyone, even if they say they're from Telegram! **This code can be used to delete your Telegram account.** We never ask to send it anywhere. 
+
+If you didn't request this code by trying to log in on **my.telegram.org**, simply ignore this message.
+2025-10-05 09:27:43,266 - INFO - 🛑 Stop command received from user
+2025-10-05 09:27:46,268 - INFO - Disconnecting from 91.108.56.152:443/TcpFull...
+2025-10-05 09:27:46,268 - INFO - Disconnection from 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:27:46,268 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:27:46,268 - ERROR - Error handling trigger message: 
+2025-10-05 09:27:46,268 - ERROR - Unhandled exception on trigger_handler
+Traceback (most recent call last):
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 735, in handle_trigger_message
+    await self.client.disconnect()
+concurrent.futures._base.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python37\lib\site-packages\telethon\client\updates.py", line 574, in _dispatch_update
+    await callback(event)
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1360, in trigger_handler
+    @self.client.on(events.NewMessage(from_users='me'))
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1170, in handle_trigger_message
+    except Exception as e:
+  File "C:\Python\Python37\lib\site-packages\telethon\tl\custom\message.py", line 830, in reply
+    await self.get_input_chat(), *args, **kwargs)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\messages.py", line 926, in send_message
+    result = await self(request)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 72, in _call
+    future = sender.send(request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\network\mtprotosender.py", line 179, in send
+    raise ConnectionError('Cannot send requests while disconnected')
+ConnectionError: Cannot send requests while disconnected
+2025-10-05 09:27:46,268 - INFO - 📨 Message from User ID: 1895962392, Username: @No username, Name: No first name
+2025-10-05 09:27:46,268 - INFO - 📝 Message text: /stop
+2025-10-05 09:27:46,294 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:27:46,304 - INFO - 📱 Disconnected from Telegram
+2025-10-05 09:27:49,706 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 09:27:49,737 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:27:50,100 - INFO - Successfully connected to Telegram
+2025-10-05 09:27:50,100 - INFO - 🤖 Bot is ready! Send /filter or /filter_contract message to start...
+2025-10-05 09:27:50,100 - INFO - 📝 Format: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]
+2025-10-05 09:27:50,100 - INFO - 🔗 Format: /filter_contract <group_username> [target_user] [yyyy.mm.dd] [limit]
+2025-10-05 09:27:50,100 - INFO - 💡 Example: /filter @mygroup username 2024.12.15 5000
+2025-10-05 09:27:50,100 - INFO - 💡 Example: /filter_contract @mygroup username 2024.12.15
+2025-10-05 09:27:50,100 - INFO - 📅 Default: No date = today's messages only (UTC+7)
+2025-10-05 09:27:50,100 - INFO - 🧪 Commands: /test (test bot), /time (show time), /timezone (explain timezone), /testmsg (test messages), /testyesterday (test yesterday), /testuser (test username), /testrecent (test recent), /testdate (test date), /testcontract (test contract API), /getuserid (get user ID), /listusers (list users), /debug (debug mode), /stop (stop bot)
+2025-10-05 09:27:50,100 - INFO - 🛑 Commands: /stop or /quit to stop bot, Ctrl+C to force stop
+2025-10-05 09:28:13,979 - INFO - 📨 Message from User ID: 936956659, Username: @No username, Name: No first name
+2025-10-05 09:28:13,980 - INFO - 📝 Message text: /filter_contract @BNNMEMECHATT
+2025-10-05 09:28:13,980 - INFO - Authorized user triggered: /filter_contract @BNNMEMECHATT
+2025-10-05 09:28:14,300 - INFO - Successfully connected to group: @BNNMEMECHATT
+2025-10-05 09:28:14,300 - INFO - No target date specified, using today's date (UTC+7): 2025-10-05
+2025-10-05 09:28:14,301 - INFO - Today's range (UTC+7): 2025-10-05 00:00:00+07:00 to 2025-10-05 23:59:59.999999+07:00
+2025-10-05 09:28:14,430 - INFO - Message 1: UTC=2025-10-05 02:24:31+00:00, UTC+7=2025-10-05 09:24:31+07:00
+2025-10-05 09:28:14,431 - INFO - Message 2: UTC=2025-10-05 02:24:14+00:00, UTC+7=2025-10-05 09:24:14+07:00
+2025-10-05 09:28:14,431 - INFO - Message 3: UTC=2025-10-05 02:23:52+00:00, UTC+7=2025-10-05 09:23:52+07:00
+2025-10-05 09:28:14,431 - INFO - Message 4: UTC=2025-10-05 02:22:43+00:00, UTC+7=2025-10-05 09:22:43+07:00
+2025-10-05 09:28:14,431 - INFO - Message 5: UTC=2025-10-05 02:21:42+00:00, UTC+7=2025-10-05 09:21:42+07:00
+2025-10-05 09:28:17,571 - INFO - Stopping at message 382 - too old: 2025-10-04 23:29:18+07:00
+2025-10-05 09:28:17,572 - INFO - Retrieved 381 messages from today (2025-10-05) in group @BNNMEMECHATT
+2025-10-05 09:28:17,572 - INFO - Processed 382 messages total, stopped early for efficiency
+2025-10-05 09:28:17,670 - INFO - Searching for contract addresses from all users in 381 messages
+2025-10-05 09:28:17,671 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:28:17,671 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:28:17,671 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:28:17,672 - INFO - Found 2 new contracts in message from landcruizz
+2025-10-05 09:28:17,672 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:28:17,672 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:28:17,672 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:28:17,672 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:28:17,672 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:28:17,672 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:28:17,672 - INFO - Found 1 new contracts in message from MaxLenover
+2025-10-05 09:28:17,673 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:28:17,673 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:28:17,673 - INFO - Found 13 messages with unique contracts from all users
+2025-10-05 09:28:17,673 - INFO - Starting to send contract analysis for 13 messages to authorized user
+2025-10-05 09:28:17,774 - INFO - Getting current price for contract: 0x73b84f7e3901f39fc29f3704a03126d317ab4444
+2025-10-05 09:28:17,775 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x73b84f7e3901f39fc29f3704a03126d317ab4444
+2025-10-05 09:28:18,211 - INFO - Current price API response status: 200
+2025-10-05 09:28:18,211 - INFO - Found price: 0.002023, market cap: 2023514
+2025-10-05 09:28:18,820 - INFO - Getting current price for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:28:18,820 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:28:19,440 - INFO - Current price API response status: 200
+2025-10-05 09:28:19,441 - WARNING - No pairs found for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:28:20,049 - INFO - Getting current price for contract: 0x139FE32d2b79c9750D6dd6442097938A7EaA4444
+2025-10-05 09:28:20,049 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x139FE32d2b79c9750D6dd6442097938A7EaA4444
+2025-10-05 09:28:20,421 - INFO - Current price API response status: 200
+2025-10-05 09:28:20,422 - INFO - Found price: 0.00003158, market cap: 31588
+2025-10-05 09:28:21,014 - INFO - Getting current price for contract: 0xc0d95e670af98e7aef6104b94cba00e7ec164444
+2025-10-05 09:28:21,015 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0xc0d95e670af98e7aef6104b94cba00e7ec164444
+2025-10-05 09:28:21,405 - INFO - Current price API response status: 200
+2025-10-05 09:28:21,406 - INFO - Found price: 0.0008191, market cap: 819145
+2025-10-05 09:28:22,018 - INFO - Getting current price for contract: 0x13bfa360820e001444bba3ef2391ec9f6255f6fd
+2025-10-05 09:28:22,018 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x13bfa360820e001444bba3ef2391ec9f6255f6fd
+2025-10-05 09:28:22,552 - INFO - Current price API response status: 200
+2025-10-05 09:28:22,553 - INFO - Found price: 0.00003847, market cap: 38479
+2025-10-05 09:28:23,219 - INFO - Getting current price for contract: 0x18c6b0d1ddacac2269702d4d9bace7290b594444
+2025-10-05 09:28:23,219 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x18c6b0d1ddacac2269702d4d9bace7290b594444
+2025-10-05 09:28:23,657 - INFO - Current price API response status: 200
+2025-10-05 09:28:23,657 - INFO - Found price: 0.00002619, market cap: 26199
+2025-10-05 09:28:24,282 - INFO - Getting current price for contract: 0x380bf199b3173cf7b3b321848ae1c5014a124444
+2025-10-05 09:28:24,282 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x380bf199b3173cf7b3b321848ae1c5014a124444
+2025-10-05 09:28:24,740 - INFO - Current price API response status: 200
+2025-10-05 09:28:24,740 - INFO - Found price: 0.0002097, market cap: 209741
+2025-10-05 09:28:25,329 - INFO - Getting current price for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:28:25,329 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:28:25,721 - INFO - Current price API response status: 200
+2025-10-05 09:28:25,721 - WARNING - No pairs found for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:28:26,361 - INFO - Getting current price for contract: 0x8a8e92a63758617bDBcB7A0213FF073502384444
+2025-10-05 09:28:26,361 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x8a8e92a63758617bDBcB7A0213FF073502384444
+2025-10-05 09:28:26,533 - INFO - Current price API response status: 200
+2025-10-05 09:28:26,533 - INFO - Found price: 0.0002888, market cap: 288872
+2025-10-05 09:28:27,205 - INFO - Getting current price for contract: 0x42c3ab02f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:28:27,205 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x42c3ab02f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:28:27,553 - INFO - Current price API response status: 200
+2025-10-05 09:28:27,553 - INFO - Found price: 0.00002090, market cap: 20908
+2025-10-05 09:28:27,553 - INFO - Getting current price for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:28:27,553 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:28:27,987 - INFO - Current price API response status: 200
+2025-10-05 09:28:27,988 - WARNING - No pairs found for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:28:28,580 - INFO - Getting current price for contract: 0x3a08a614ceb8b2380a022e5d35873fd2d8e64444
+2025-10-05 09:28:28,580 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x3a08a614ceb8b2380a022e5d35873fd2d8e64444
+2025-10-05 09:28:28,942 - INFO - Current price API response status: 200
+2025-10-05 09:28:28,942 - INFO - Found price: 0.0009921, market cap: 992194
+2025-10-05 09:28:29,549 - INFO - Getting current price for contract: 0xf339968b81663d6a7558562fce81f0fca3cb4444
+2025-10-05 09:28:29,549 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0xf339968b81663d6a7558562fce81f0fca3cb4444
+2025-10-05 09:28:29,675 - INFO - Current price API response status: 200
+2025-10-05 09:28:29,676 - INFO - Found price: 0.0004759, market cap: 475916
+2025-10-05 09:28:30,298 - INFO - Getting current price for contract: EbWx89dZ7cMceY6CAyeK13au7FD4eGata6KV2AyvBLV
+2025-10-05 09:28:30,298 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/EbWx89dZ7cMceY6CAyeK13au7FD4eGata6KV2AyvBLV
+2025-10-05 09:28:30,454 - INFO - Current price API response status: 200
+2025-10-05 09:28:30,454 - INFO - Found price: 0.007722, market cap: 7722413
+2025-10-05 09:28:31,080 - INFO - Contract analysis sent successfully to authorized user
+2025-10-05 09:31:19,817 - INFO - 📨 Message from User ID: 936956659, Username: @No username, Name: No first name
+2025-10-05 09:31:19,818 - INFO - 📝 Message text: /filter_contract @BNNMEMECHATT
+2025-10-05 09:31:19,818 - INFO - Authorized user triggered: /filter_contract @BNNMEMECHATT
+2025-10-05 09:31:20,107 - INFO - Successfully connected to group: @BNNMEMECHATT
+2025-10-05 09:31:20,108 - INFO - No target date specified, using today's date (UTC+7): 2025-10-05
+2025-10-05 09:31:20,108 - INFO - Today's range (UTC+7): 2025-10-05 00:00:00+07:00 to 2025-10-05 23:59:59.999999+07:00
+2025-10-05 09:31:20,231 - INFO - Message 1: UTC=2025-10-05 02:24:31+00:00, UTC+7=2025-10-05 09:24:31+07:00
+2025-10-05 09:31:20,231 - INFO - Message 2: UTC=2025-10-05 02:24:14+00:00, UTC+7=2025-10-05 09:24:14+07:00
+2025-10-05 09:31:20,231 - INFO - Message 3: UTC=2025-10-05 02:23:52+00:00, UTC+7=2025-10-05 09:23:52+07:00
+2025-10-05 09:31:20,231 - INFO - Message 4: UTC=2025-10-05 02:22:43+00:00, UTC+7=2025-10-05 09:22:43+07:00
+2025-10-05 09:31:20,231 - INFO - Message 5: UTC=2025-10-05 02:21:42+00:00, UTC+7=2025-10-05 09:21:42+07:00
+2025-10-05 09:31:23,295 - INFO - Stopping at message 382 - too old: 2025-10-04 23:29:18+07:00
+2025-10-05 09:31:23,295 - INFO - Retrieved 381 messages from today (2025-10-05) in group @BNNMEMECHATT
+2025-10-05 09:31:23,295 - INFO - Processed 382 messages total, stopped early for efficiency
+2025-10-05 09:31:23,392 - INFO - Searching for contract addresses from all users in 381 messages
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:31:23,392 - INFO - Found 2 new contracts in message from landcruizz
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from MaxLenover
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:31:23,392 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:31:23,392 - INFO - Found 13 messages with unique contracts from all users
+2025-10-05 09:31:23,392 - INFO - Starting to send contract analysis for 13 messages to authorized user
+2025-10-05 09:31:23,554 - INFO - Getting current price for contract: 0x73b84f7e3901f39fc29f3704a03126d317ab4444
+2025-10-05 09:31:23,555 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x73b84f7e3901f39fc29f3704a03126d317ab4444
+2025-10-05 09:31:23,674 - INFO - Current price API response status: 200
+2025-10-05 09:31:23,676 - INFO - Found price: 0.002014, market cap: 2014576
+2025-10-05 09:31:24,295 - INFO - Getting current price for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:31:24,295 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:31:24,688 - INFO - Current price API response status: 200
+2025-10-05 09:31:24,688 - WARNING - No pairs found for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:31:25,326 - INFO - Getting current price for contract: 0x139FE32d2b79c9750D6dd6442097938A7EaA4444
+2025-10-05 09:31:25,326 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x139FE32d2b79c9750D6dd6442097938A7EaA4444
+2025-10-05 09:31:25,707 - INFO - Current price API response status: 200
+2025-10-05 09:31:25,707 - INFO - Found price: 0.00002980, market cap: 29804
+2025-10-05 09:31:26,314 - INFO - Getting current price for contract: 0xc0d95e670af98e7aef6104b94cba00e7ec164444
+2025-10-05 09:31:26,314 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0xc0d95e670af98e7aef6104b94cba00e7ec164444
+2025-10-05 09:31:26,426 - INFO - Current price API response status: 200
+2025-10-05 09:31:26,442 - INFO - Found price: 0.0007812, market cap: 781241
+2025-10-05 09:31:27,078 - INFO - Getting current price for contract: 0x13bfa360820e001444bba3ef2391ec9f6255f6fd
+2025-10-05 09:31:27,079 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x13bfa360820e001444bba3ef2391ec9f6255f6fd
+2025-10-05 09:31:27,501 - INFO - Current price API response status: 200
+2025-10-05 09:31:27,501 - INFO - Found price: 0.00003847, market cap: 38479
+2025-10-05 09:31:28,125 - INFO - Getting current price for contract: 0x18c6b0d1ddacac2269702d4d9bace7290b594444
+2025-10-05 09:31:28,127 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x18c6b0d1ddacac2269702d4d9bace7290b594444
+2025-10-05 09:31:28,468 - INFO - Current price API response status: 200
+2025-10-05 09:31:28,468 - INFO - Found price: 0.00002639, market cap: 26393
+2025-10-05 09:31:29,094 - INFO - Getting current price for contract: 0x380bf199b3173cf7b3b321848ae1c5014a124444
+2025-10-05 09:31:29,094 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x380bf199b3173cf7b3b321848ae1c5014a124444
+2025-10-05 09:31:29,960 - INFO - Current price API response status: 200
+2025-10-05 09:31:29,960 - INFO - Found price: 0.0002097, market cap: 209741
+2025-10-05 09:31:30,565 - INFO - Getting current price for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:31:30,565 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:31:30,950 - INFO - Current price API response status: 200
+2025-10-05 09:31:30,951 - WARNING - No pairs found for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:31:31,556 - INFO - Getting current price for contract: 0x8a8e92a63758617bDBcB7A0213FF073502384444
+2025-10-05 09:31:31,556 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x8a8e92a63758617bDBcB7A0213FF073502384444
+2025-10-05 09:31:31,735 - INFO - Current price API response status: 200
+2025-10-05 09:31:31,735 - INFO - Found price: 0.0002980, market cap: 298035
+2025-10-05 09:31:32,358 - INFO - Getting current price for contract: 0x42c3ab02f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:31:32,358 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x42c3ab02f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:31:32,721 - INFO - Current price API response status: 200
+2025-10-05 09:31:32,721 - INFO - Found price: 0.00002289, market cap: 22892
+2025-10-05 09:31:32,721 - INFO - Getting current price for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:31:32,736 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:31:33,227 - INFO - Current price API response status: 200
+2025-10-05 09:31:33,227 - WARNING - No pairs found for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:31:33,861 - INFO - Getting current price for contract: 0x3a08a614ceb8b2380a022e5d35873fd2d8e64444
+2025-10-05 09:31:33,861 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x3a08a614ceb8b2380a022e5d35873fd2d8e64444
+2025-10-05 09:31:34,220 - INFO - Current price API response status: 200
+2025-10-05 09:31:34,223 - INFO - Found price: 0.0009733, market cap: 973357
+2025-10-05 09:31:34,857 - INFO - Getting current price for contract: 0xf339968b81663d6a7558562fce81f0fca3cb4444
+2025-10-05 09:31:34,857 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0xf339968b81663d6a7558562fce81f0fca3cb4444
+2025-10-05 09:31:34,982 - INFO - Current price API response status: 200
+2025-10-05 09:31:34,983 - INFO - Found price: 0.0004509, market cap: 450959
+2025-10-05 09:31:35,580 - INFO - Getting current price for contract: EbWx89dZ7cMceY6CAyeK13au7FD4eGata6KV2AyvBLV
+2025-10-05 09:31:35,580 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/EbWx89dZ7cMceY6CAyeK13au7FD4eGata6KV2AyvBLV
+2025-10-05 09:31:35,737 - INFO - Current price API response status: 200
+2025-10-05 09:31:35,737 - INFO - Found price: 0.007874, market cap: 7873908
+2025-10-05 09:31:36,356 - INFO - Contract analysis sent successfully to authorized user
+2025-10-05 09:33:33,852 - INFO - 📨 Message from User ID: 936956659, Username: @No username, Name: No first name
+2025-10-05 09:33:33,852 - INFO - 📝 Message text: /stop
+2025-10-05 09:33:33,853 - INFO - Authorized user triggered: /stop
+2025-10-05 09:34:11,407 - INFO - 📨 Message from User ID: 936956659, Username: @No username, Name: No first name
+2025-10-05 09:34:11,408 - INFO - 📝 Message text: /filter_contract @BNNMEMECHATT
+2025-10-05 09:34:11,408 - INFO - Authorized user triggered: /filter_contract @BNNMEMECHATT
+2025-10-05 09:34:11,675 - INFO - Successfully connected to group: @BNNMEMECHATT
+2025-10-05 09:34:11,675 - INFO - No target date specified, using today's date (UTC+7): 2025-10-05
+2025-10-05 09:34:11,675 - INFO - Today's range (UTC+7): 2025-10-05 00:00:00+07:00 to 2025-10-05 23:59:59.999999+07:00
+2025-10-05 09:34:11,799 - INFO - Message 1: UTC=2025-10-05 02:24:31+00:00, UTC+7=2025-10-05 09:24:31+07:00
+2025-10-05 09:34:11,800 - INFO - Message 2: UTC=2025-10-05 02:24:14+00:00, UTC+7=2025-10-05 09:24:14+07:00
+2025-10-05 09:34:11,800 - INFO - Message 3: UTC=2025-10-05 02:23:52+00:00, UTC+7=2025-10-05 09:23:52+07:00
+2025-10-05 09:34:11,800 - INFO - Message 4: UTC=2025-10-05 02:22:43+00:00, UTC+7=2025-10-05 09:22:43+07:00
+2025-10-05 09:34:11,800 - INFO - Message 5: UTC=2025-10-05 02:21:42+00:00, UTC+7=2025-10-05 09:21:42+07:00
+2025-10-05 09:34:14,846 - INFO - Stopping at message 382 - too old: 2025-10-04 23:29:18+07:00
+2025-10-05 09:34:14,846 - INFO - Retrieved 381 messages from today (2025-10-05) in group @BNNMEMECHATT
+2025-10-05 09:34:14,846 - INFO - Processed 382 messages total, stopped early for efficiency
+2025-10-05 09:34:14,955 - INFO - Searching for contract addresses from all users in 381 messages
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:34:14,955 - INFO - Found 2 new contracts in message from landcruizz
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from MaxLenover
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:34:14,955 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:34:14,955 - INFO - Found 13 messages with unique contracts from all users
+2025-10-05 09:34:14,955 - INFO - Starting to send contract analysis for 13 messages to authorized user
+2025-10-05 09:34:15,086 - INFO - Getting current price for contract: 0x73b84f7e3901f39fc29f3704a03126d317ab4444
+2025-10-05 09:34:15,086 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x73b84f7e3901f39fc29f3704a03126d317ab4444
+2025-10-05 09:34:15,501 - INFO - Current price API response status: 200
+2025-10-05 09:34:15,501 - INFO - Found price: 0.002054, market cap: 2054418
+2025-10-05 09:34:16,141 - INFO - Getting current price for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:34:16,141 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:34:16,517 - INFO - Current price API response status: 200
+2025-10-05 09:34:16,517 - WARNING - No pairs found for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:34:17,157 - INFO - Getting current price for contract: 0x139FE32d2b79c9750D6dd6442097938A7EaA4444
+2025-10-05 09:34:17,157 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x139FE32d2b79c9750D6dd6442097938A7EaA4444
+2025-10-05 09:34:17,345 - INFO - Current price API response status: 200
+2025-10-05 09:34:17,345 - INFO - Found price: 0.00002328, market cap: 23290
+2025-10-05 09:34:17,953 - INFO - Getting current price for contract: 0xc0d95e670af98e7aef6104b94cba00e7ec164444
+2025-10-05 09:34:17,953 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0xc0d95e670af98e7aef6104b94cba00e7ec164444
+2025-10-05 09:34:18,122 - INFO - Current price API response status: 200
+2025-10-05 09:34:18,123 - INFO - Found price: 0.0008208, market cap: 820821
+2025-10-05 09:34:18,753 - INFO - Getting current price for contract: 0x13bfa360820e001444bba3ef2391ec9f6255f6fd
+2025-10-05 09:34:18,753 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x13bfa360820e001444bba3ef2391ec9f6255f6fd
+2025-10-05 09:34:19,220 - INFO - Current price API response status: 200
+2025-10-05 09:34:19,221 - INFO - Found price: 0.00003847, market cap: 38479
+2025-10-05 09:34:19,831 - INFO - Getting current price for contract: 0x18c6b0d1ddacac2269702d4d9bace7290b594444
+2025-10-05 09:34:19,831 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x18c6b0d1ddacac2269702d4d9bace7290b594444
+2025-10-05 09:34:20,205 - INFO - Current price API response status: 200
+2025-10-05 09:34:20,205 - INFO - Found price: 0.00002402, market cap: 24021
+2025-10-05 09:34:20,861 - INFO - Getting current price for contract: 0x380bf199b3173cf7b3b321848ae1c5014a124444
+2025-10-05 09:34:20,861 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x380bf199b3173cf7b3b321848ae1c5014a124444
+2025-10-05 09:34:21,408 - INFO - Current price API response status: 200
+2025-10-05 09:34:21,408 - INFO - Found price: 0.0002097, market cap: 209741
+2025-10-05 09:34:22,017 - INFO - Getting current price for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:34:22,017 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:34:22,455 - INFO - Current price API response status: 200
+2025-10-05 09:34:22,455 - WARNING - No pairs found for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:34:23,079 - INFO - Getting current price for contract: 0x8a8e92a63758617bDBcB7A0213FF073502384444
+2025-10-05 09:34:23,079 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x8a8e92a63758617bDBcB7A0213FF073502384444
+2025-10-05 09:34:23,470 - INFO - Current price API response status: 200
+2025-10-05 09:34:23,486 - INFO - Found price: 0.0002587, market cap: 258704
+2025-10-05 09:34:24,095 - INFO - Getting current price for contract: 0x42c3ab02f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:34:24,095 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x42c3ab02f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:34:24,454 - INFO - Current price API response status: 200
+2025-10-05 09:34:24,454 - INFO - Found price: 0.00002289, market cap: 22892
+2025-10-05 09:34:24,454 - INFO - Getting current price for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:34:24,454 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:34:24,899 - INFO - Current price API response status: 200
+2025-10-05 09:34:24,899 - WARNING - No pairs found for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:34:25,526 - INFO - Getting current price for contract: 0x3a08a614ceb8b2380a022e5d35873fd2d8e64444
+2025-10-05 09:34:25,526 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x3a08a614ceb8b2380a022e5d35873fd2d8e64444
+2025-10-05 09:34:25,877 - INFO - Current price API response status: 200
+2025-10-05 09:34:25,877 - INFO - Found price: 0.0009149, market cap: 914927
+2025-10-05 09:34:26,471 - INFO - Getting current price for contract: 0xf339968b81663d6a7558562fce81f0fca3cb4444
+2025-10-05 09:34:26,471 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0xf339968b81663d6a7558562fce81f0fca3cb4444
+2025-10-05 09:34:26,596 - INFO - Current price API response status: 200
+2025-10-05 09:34:26,596 - INFO - Found price: 0.0004812, market cap: 481277
+2025-10-05 09:34:27,220 - INFO - Getting current price for contract: EbWx89dZ7cMceY6CAyeK13au7FD4eGata6KV2AyvBLV
+2025-10-05 09:34:27,220 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/EbWx89dZ7cMceY6CAyeK13au7FD4eGata6KV2AyvBLV
+2025-10-05 09:34:27,376 - INFO - Current price API response status: 200
+2025-10-05 09:34:27,376 - INFO - Found price: 0.007036, market cap: 7036741
+2025-10-05 09:34:27,985 - INFO - Contract analysis sent successfully to authorized user
+2025-10-05 09:35:53,558 - INFO - 🛑 Stop command received from user
+2025-10-05 09:35:56,574 - INFO - Disconnecting from 91.108.56.152:443/TcpFull...
+2025-10-05 09:35:56,575 - INFO - Disconnection from 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:35:56,575 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:35:56,576 - ERROR - Error handling trigger message: 
+2025-10-05 09:35:56,576 - ERROR - Unhandled exception on trigger_handler
+Traceback (most recent call last):
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 735, in handle_trigger_message
+    await self.client.disconnect()
+concurrent.futures._base.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python37\lib\site-packages\telethon\client\updates.py", line 574, in _dispatch_update
+    await callback(event)
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1362, in trigger_handler
+    await self.handle_trigger_message(event)
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1172, in handle_trigger_message
+    await event.reply(f"❌ Lỗi: {str(e)}")
+  File "C:\Python\Python37\lib\site-packages\telethon\tl\custom\message.py", line 830, in reply
+    await self.get_input_chat(), *args, **kwargs)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\messages.py", line 926, in send_message
+    result = await self(request)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 72, in _call
+    future = sender.send(request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\network\mtprotosender.py", line 179, in send
+    raise ConnectionError('Cannot send requests while disconnected')
+ConnectionError: Cannot send requests while disconnected
+2025-10-05 09:35:56,579 - INFO - 📨 Message from User ID: 1895962392, Username: @No username, Name: No first name
+2025-10-05 09:35:56,579 - INFO - 📝 Message text: /stop
+2025-10-05 09:35:56,600 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:35:56,614 - INFO - 📱 Disconnected from Telegram
+2025-10-05 09:36:00,050 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 09:36:00,092 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:36:00,465 - INFO - Successfully connected to Telegram
+2025-10-05 09:36:00,465 - INFO - 🤖 Bot is ready! Send /filter or /filter_contract message to start...
+2025-10-05 09:36:00,465 - INFO - 📝 Format: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]
+2025-10-05 09:36:00,465 - INFO - 🔗 Format: /filter_contract <group_username> [target_user] [yyyy.mm.dd] [limit]
+2025-10-05 09:36:00,465 - INFO - 💡 Example: /filter @mygroup username 2024.12.15 5000
+2025-10-05 09:36:00,466 - INFO - 💡 Example: /filter_contract @mygroup username 2024.12.15
+2025-10-05 09:36:00,466 - INFO - 📅 Default: No date = today's messages only (UTC+7)
+2025-10-05 09:36:00,466 - INFO - 🧪 Commands: /test (test bot), /time (show time), /timezone (explain timezone), /testmsg (test messages), /testyesterday (test yesterday), /testuser (test username), /testrecent (test recent), /testdate (test date), /testcontract (test contract API), /getuserid (get user ID), /listusers (list users), /debug (debug mode), /stop (stop bot)
+2025-10-05 09:36:00,466 - INFO - 🛑 Commands: /stop or /quit to stop bot, Ctrl+C to force stop
+2025-10-05 09:36:11,571 - INFO - Successfully connected to group: @BNNMEMECHATT
+2025-10-05 09:36:11,571 - INFO - No target date specified, using today's date (UTC+7): 2025-10-05
+2025-10-05 09:36:11,571 - INFO - Today's range (UTC+7): 2025-10-05 00:00:00+07:00 to 2025-10-05 23:59:59.999999+07:00
+2025-10-05 09:36:11,702 - INFO - Message 1: UTC=2025-10-05 02:24:31+00:00, UTC+7=2025-10-05 09:24:31+07:00
+2025-10-05 09:36:11,703 - INFO - Message 2: UTC=2025-10-05 02:24:14+00:00, UTC+7=2025-10-05 09:24:14+07:00
+2025-10-05 09:36:11,703 - INFO - Message 3: UTC=2025-10-05 02:23:52+00:00, UTC+7=2025-10-05 09:23:52+07:00
+2025-10-05 09:36:11,704 - INFO - Message 4: UTC=2025-10-05 02:22:43+00:00, UTC+7=2025-10-05 09:22:43+07:00
+2025-10-05 09:36:11,706 - INFO - Message 5: UTC=2025-10-05 02:21:42+00:00, UTC+7=2025-10-05 09:21:42+07:00
+2025-10-05 09:36:14,772 - INFO - Stopping at message 382 - too old: 2025-10-04 23:29:18+07:00
+2025-10-05 09:36:14,772 - INFO - Retrieved 381 messages from today (2025-10-05) in group @BNNMEMECHATT
+2025-10-05 09:36:14,773 - INFO - Processed 382 messages total, stopped early for efficiency
+2025-10-05 09:36:14,869 - INFO - Searching for contract addresses from all users in 381 messages
+2025-10-05 09:36:14,870 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:36:14,870 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:36:14,870 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:36:14,870 - INFO - Found 2 new contracts in message from landcruizz
+2025-10-05 09:36:14,871 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:36:14,871 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:36:14,871 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:36:14,872 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:36:14,872 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:36:14,872 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:36:14,872 - INFO - Found 1 new contracts in message from MaxLenover
+2025-10-05 09:36:14,873 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:36:14,873 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:36:14,873 - INFO - Found 13 messages with unique contracts from all users
+2025-10-05 09:36:14,874 - INFO - Starting to send contract analysis for 13 messages
+2025-10-05 09:36:14,926 - INFO - Sending contract analysis to Saved Messages for user: Manihold
+2025-10-05 09:36:14,993 - INFO - Getting current price for contract: 0x73b84f7e3901f39fc29f3704a03126d317ab4444
+2025-10-05 09:36:14,994 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x73b84f7e3901f39fc29f3704a03126d317ab4444
+2025-10-05 09:36:15,405 - INFO - Current price API response status: 200
+2025-10-05 09:36:15,406 - INFO - Found price: 0.002055, market cap: 2055972
+2025-10-05 09:36:16,040 - INFO - Getting current price for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:36:16,040 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:36:16,653 - INFO - Current price API response status: 200
+2025-10-05 09:36:16,654 - WARNING - No pairs found for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:36:17,264 - INFO - Getting current price for contract: 0x139FE32d2b79c9750D6dd6442097938A7EaA4444
+2025-10-05 09:36:17,264 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x139FE32d2b79c9750D6dd6442097938A7EaA4444
+2025-10-05 09:36:17,633 - INFO - Current price API response status: 200
+2025-10-05 09:36:17,633 - INFO - Found price: 0.00002147, market cap: 21477
+2025-10-05 09:36:18,216 - INFO - Getting current price for contract: 0xc0d95e670af98e7aef6104b94cba00e7ec164444
+2025-10-05 09:36:18,216 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0xc0d95e670af98e7aef6104b94cba00e7ec164444
+2025-10-05 09:36:18,598 - INFO - Current price API response status: 200
+2025-10-05 09:36:18,598 - INFO - Found price: 0.0007890, market cap: 789033
+2025-10-05 09:36:19,185 - INFO - Getting current price for contract: 0x13bfa360820e001444bba3ef2391ec9f6255f6fd
+2025-10-05 09:36:19,185 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x13bfa360820e001444bba3ef2391ec9f6255f6fd
+2025-10-05 09:36:20,553 - INFO - Current price API response status: 200
+2025-10-05 09:36:20,554 - INFO - Found price: 0.00003847, market cap: 38479
+2025-10-05 09:36:21,162 - INFO - Getting current price for contract: 0x18c6b0d1ddacac2269702d4d9bace7290b594444
+2025-10-05 09:36:21,162 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x18c6b0d1ddacac2269702d4d9bace7290b594444
+2025-10-05 09:36:21,576 - INFO - Current price API response status: 200
+2025-10-05 09:36:21,577 - INFO - Found price: 0.00002410, market cap: 24101
+2025-10-05 09:36:22,160 - INFO - Getting current price for contract: 0x380bf199b3173cf7b3b321848ae1c5014a124444
+2025-10-05 09:36:22,161 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x380bf199b3173cf7b3b321848ae1c5014a124444
+2025-10-05 09:36:22,624 - INFO - Current price API response status: 200
+2025-10-05 09:36:22,624 - INFO - Found price: 0.0002097, market cap: 209741
+2025-10-05 09:36:23,202 - INFO - Getting current price for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:36:23,202 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:36:23,588 - INFO - Current price API response status: 200
+2025-10-05 09:36:23,588 - WARNING - No pairs found for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:36:24,169 - INFO - Getting current price for contract: 0x8a8e92a63758617bDBcB7A0213FF073502384444
+2025-10-05 09:36:24,170 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x8a8e92a63758617bDBcB7A0213FF073502384444
+2025-10-05 09:36:24,355 - INFO - Current price API response status: 200
+2025-10-05 09:36:24,355 - INFO - Found price: 0.0002626, market cap: 262633
+2025-10-05 09:36:24,942 - INFO - Getting current price for contract: 0x42c3ab02f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:36:24,944 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x42c3ab02f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:36:25,327 - INFO - Current price API response status: 200
+2025-10-05 09:36:25,328 - INFO - Found price: 0.00002289, market cap: 22892
+2025-10-05 09:36:25,328 - INFO - Getting current price for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:36:25,328 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:36:25,753 - INFO - Current price API response status: 200
+2025-10-05 09:36:25,753 - WARNING - No pairs found for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:36:26,329 - INFO - Getting current price for contract: 0x3a08a614ceb8b2380a022e5d35873fd2d8e64444
+2025-10-05 09:36:26,329 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x3a08a614ceb8b2380a022e5d35873fd2d8e64444
+2025-10-05 09:36:26,674 - INFO - Current price API response status: 200
+2025-10-05 09:36:26,674 - INFO - Found price: 0.0009283, market cap: 928303
+2025-10-05 09:36:27,261 - INFO - Getting current price for contract: 0xf339968b81663d6a7558562fce81f0fca3cb4444
+2025-10-05 09:36:27,261 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0xf339968b81663d6a7558562fce81f0fca3cb4444
+2025-10-05 09:36:27,372 - INFO - Current price API response status: 200
+2025-10-05 09:36:27,373 - INFO - Found price: 0.0004938, market cap: 493886
+2025-10-05 09:36:27,959 - INFO - Getting current price for contract: EbWx89dZ7cMceY6CAyeK13au7FD4eGata6KV2AyvBLV
+2025-10-05 09:36:27,959 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/EbWx89dZ7cMceY6CAyeK13au7FD4eGata6KV2AyvBLV
+2025-10-05 09:36:28,437 - INFO - Current price API response status: 200
+2025-10-05 09:36:28,438 - INFO - Found price: 0.007229, market cap: 7229719
+2025-10-05 09:36:29,019 - INFO - Contract analysis sent successfully to Saved Messages
+2025-10-05 09:36:29,221 - INFO - 📨 Message from User ID: 1895962392, Username: @No username, Name: No first name
+2025-10-05 09:36:29,222 - INFO - 📝 Message text: /filter_contract @BNNMEMECHATT
+2025-10-05 09:36:39,667 - INFO - 📨 Message from User ID: 6461312306, Username: @None, Name: 19
+2025-10-05 09:36:39,667 - INFO - 📝 Message text: Btc có ath ae à
+2025-10-05 09:36:46,620 - INFO - 📨 Message from User ID: 6461312306, Username: @Abcdefhahansns, Name: 19
+2025-10-05 09:36:46,620 - INFO - 📝 Message text: Lại cpi bơm meme tug nóc
+2025-10-05 09:37:19,537 - INFO - 📨 Message from User ID: 5133461406, Username: @None, Name: TruongNm93
+2025-10-05 09:37:19,537 - INFO - 📝 Message text: Sắp có ath r
+2025-10-05 09:40:42,361 - INFO - 📨 Message from User ID: 1303641432, Username: @None, Name: 16
+2025-10-05 09:40:42,361 - INFO - 📝 Message text: Có khi nào mỗi tuần nó bơm 1 hệ k
+2025-10-05 09:40:45,479 - INFO - 📨 Message from User ID: 1303641432, Username: @None, Name: 16
+2025-10-05 09:40:45,479 - INFO - 📝 Message text: Tuần này bsc r
+2025-10-05 09:40:52,879 - INFO - 📨 Message from User ID: 1303641432, Username: @None, Name: 16
+2025-10-05 09:40:52,880 - INFO - 📝 Message text: Tuần sau sol
+2025-10-05 09:40:58,087 - INFO - 📨 Message from User ID: 1303641432, Username: @None, Name: 16
+2025-10-05 09:40:58,088 - INFO - 📝 Message text: Sau đến eth k 🤣
+2025-10-05 09:41:37,733 - INFO - 🛑 Stop command received from user
+2025-10-05 09:41:40,744 - INFO - Disconnecting from 91.108.56.152:443/TcpFull...
+2025-10-05 09:41:40,745 - INFO - Disconnection from 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:41:40,746 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:41:40,746 - ERROR - Error handling trigger message: 
+2025-10-05 09:41:40,747 - ERROR - Unhandled exception on trigger_handler
+Traceback (most recent call last):
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 735, in handle_trigger_message
+    await self.client.disconnect()
+concurrent.futures._base.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python37\lib\site-packages\telethon\client\updates.py", line 574, in _dispatch_update
+    await callback(event)
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1362, in trigger_handler
+    await self.handle_trigger_message(event)
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1172, in handle_trigger_message
+    await event.reply(f"❌ Lỗi: {str(e)}")
+  File "C:\Python\Python37\lib\site-packages\telethon\tl\custom\message.py", line 830, in reply
+    await self.get_input_chat(), *args, **kwargs)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\messages.py", line 926, in send_message
+    result = await self(request)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 72, in _call
+    future = sender.send(request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\network\mtprotosender.py", line 179, in send
+    raise ConnectionError('Cannot send requests while disconnected')
+ConnectionError: Cannot send requests while disconnected
+2025-10-05 09:41:40,747 - INFO - 📨 Message from User ID: 1895962392, Username: @No username, Name: No first name
+2025-10-05 09:41:40,747 - INFO - 📝 Message text: /stop
+2025-10-05 09:41:40,767 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:41:40,782 - INFO - 📱 Disconnected from Telegram
+2025-10-05 09:43:07,877 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 09:43:07,940 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:43:08,345 - INFO - Successfully connected to Telegram
+2025-10-05 09:43:08,345 - INFO - 🤖 Bot is ready! Send /filter or /filter_contract message to start...
+2025-10-05 09:43:08,345 - INFO - 📝 Format: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]
+2025-10-05 09:43:08,345 - INFO - 🔗 Format: /filter_contract <group_username> [target_user] [yyyy.mm.dd] [limit]
+2025-10-05 09:43:08,345 - INFO - 💡 Example: /filter @mygroup username 2024.12.15 5000
+2025-10-05 09:43:08,345 - INFO - 💡 Example: /filter_contract @mygroup username 2024.12.15
+2025-10-05 09:43:08,345 - INFO - 📅 Default: No date = today's messages only (UTC+7)
+2025-10-05 09:43:08,345 - INFO - 🧪 Commands: /test (test bot), /time (show time), /timezone (explain timezone), /testmsg (test messages), /testyesterday (test yesterday), /testuser (test username), /testrecent (test recent), /testdate (test date), /testcontract (test contract API), /getuserid (get user ID), /listusers (list users), /debug (debug mode), /stop (stop bot)
+2025-10-05 09:43:08,345 - INFO - 🛑 Commands: /stop or /quit to stop bot, Ctrl+C to force stop
+2025-10-05 09:43:27,444 - INFO - Authorized user triggered: /filter_contract @BNNMEMECHATT
+2025-10-05 09:43:27,740 - INFO - Successfully connected to group: @BNNMEMECHATT
+2025-10-05 09:43:27,741 - INFO - No target date specified, using today's date (UTC+7): 2025-10-05
+2025-10-05 09:43:27,741 - INFO - Today's range (UTC+7): 2025-10-05 00:00:00+07:00 to 2025-10-05 23:59:59.999999+07:00
+2025-10-05 09:43:27,880 - INFO - Message 1: UTC=2025-10-05 02:40:58+00:00, UTC+7=2025-10-05 09:40:58+07:00
+2025-10-05 09:43:27,880 - INFO - Message 2: UTC=2025-10-05 02:40:53+00:00, UTC+7=2025-10-05 09:40:53+07:00
+2025-10-05 09:43:27,881 - INFO - Message 3: UTC=2025-10-05 02:40:45+00:00, UTC+7=2025-10-05 09:40:45+07:00
+2025-10-05 09:43:27,881 - INFO - Message 4: UTC=2025-10-05 02:40:42+00:00, UTC+7=2025-10-05 09:40:42+07:00
+2025-10-05 09:43:27,881 - INFO - Message 5: UTC=2025-10-05 02:37:20+00:00, UTC+7=2025-10-05 09:37:20+07:00
+2025-10-05 09:43:30,908 - INFO - Stopping at message 389 - too old: 2025-10-04 23:29:18+07:00
+2025-10-05 09:43:30,908 - INFO - Retrieved 388 messages from today (2025-10-05) in group @BNNMEMECHATT
+2025-10-05 09:43:30,908 - INFO - Processed 389 messages total, stopped early for efficiency
+2025-10-05 09:43:31,034 - INFO - Searching for contract addresses from all users in 388 messages
+2025-10-05 09:43:31,034 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:43:31,034 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:43:31,034 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:43:31,040 - INFO - Found 2 new contracts in message from landcruizz
+2025-10-05 09:43:31,040 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:43:31,040 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:43:31,040 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:43:31,041 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:43:31,041 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:43:31,041 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:43:31,041 - INFO - Found 1 new contracts in message from MaxLenover
+2025-10-05 09:43:31,042 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:43:31,042 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:43:31,042 - INFO - Found 13 messages with unique contracts from all users
+2025-10-05 09:43:31,042 - INFO - Starting to send contract analysis for 13 messages to authorized user
+2025-10-05 09:43:31,165 - INFO - Getting current price for contract: 0x73b84f7e3901f39fc29f3704a03126d317ab4444
+2025-10-05 09:43:31,166 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x73b84f7e3901f39fc29f3704a03126d317ab4444
+2025-10-05 09:43:31,337 - INFO - Current price API response status: 200
+2025-10-05 09:43:31,338 - INFO - Found price: 0.002247, market cap: 2247648
+2025-10-05 09:43:31,970 - INFO - Getting current price for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:43:31,970 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:43:32,356 - INFO - Current price API response status: 200
+2025-10-05 09:43:32,356 - WARNING - No pairs found for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:43:33,003 - INFO - Getting current price for contract: 0x139FE32d2b79c9750D6dd6442097938A7EaA4444
+2025-10-05 09:43:33,003 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x139FE32d2b79c9750D6dd6442097938A7EaA4444
+2025-10-05 09:43:33,402 - INFO - Current price API response status: 200
+2025-10-05 09:43:33,403 - INFO - Found price: 0.00002428, market cap: 24287
+2025-10-05 09:43:34,017 - INFO - Getting current price for contract: 0xc0d95e670af98e7aef6104b94cba00e7ec164444
+2025-10-05 09:43:34,017 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0xc0d95e670af98e7aef6104b94cba00e7ec164444
+2025-10-05 09:43:34,131 - INFO - Current price API response status: 200
+2025-10-05 09:43:34,131 - INFO - Found price: 0.0006375, market cap: 637577
+2025-10-05 09:43:34,745 - INFO - Getting current price for contract: 0x13bfa360820e001444bba3ef2391ec9f6255f6fd
+2025-10-05 09:43:34,745 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x13bfa360820e001444bba3ef2391ec9f6255f6fd
+2025-10-05 09:43:35,158 - INFO - Current price API response status: 200
+2025-10-05 09:43:35,158 - INFO - Found price: 0.00003847, market cap: 38479
+2025-10-05 09:43:35,799 - INFO - Getting current price for contract: 0x18c6b0d1ddacac2269702d4d9bace7290b594444
+2025-10-05 09:43:35,799 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x18c6b0d1ddacac2269702d4d9bace7290b594444
+2025-10-05 09:43:36,188 - INFO - Current price API response status: 200
+2025-10-05 09:43:36,188 - INFO - Found price: 0.00002388, market cap: 23881
+2025-10-05 09:43:36,827 - INFO - Getting current price for contract: 0x380bf199b3173cf7b3b321848ae1c5014a124444
+2025-10-05 09:43:36,827 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x380bf199b3173cf7b3b321848ae1c5014a124444
+2025-10-05 09:43:37,237 - INFO - Current price API response status: 200
+2025-10-05 09:43:37,237 - INFO - Found price: 0.0002097, market cap: 209741
+2025-10-05 09:43:37,893 - INFO - Getting current price for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:43:37,893 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:43:38,315 - INFO - Current price API response status: 200
+2025-10-05 09:43:38,315 - WARNING - No pairs found for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:43:38,939 - INFO - Getting current price for contract: 0x8a8e92a63758617bDBcB7A0213FF073502384444
+2025-10-05 09:43:38,939 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x8a8e92a63758617bDBcB7A0213FF073502384444
+2025-10-05 09:43:39,134 - INFO - Current price API response status: 200
+2025-10-05 09:43:39,134 - INFO - Found price: 0.0002515, market cap: 251553
+2025-10-05 09:43:39,752 - INFO - Getting current price for contract: 0x42c3ab02f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:43:39,752 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x42c3ab02f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:43:40,158 - INFO - Current price API response status: 200
+2025-10-05 09:43:40,158 - INFO - Found price: 0.00002385, market cap: 23850
+2025-10-05 09:43:40,158 - INFO - Getting current price for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:43:40,158 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:43:40,644 - INFO - Current price API response status: 200
+2025-10-05 09:43:40,644 - WARNING - No pairs found for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:43:41,283 - INFO - Getting current price for contract: 0x3a08a614ceb8b2380a022e5d35873fd2d8e64444
+2025-10-05 09:43:41,283 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0x3a08a614ceb8b2380a022e5d35873fd2d8e64444
+2025-10-05 09:43:41,626 - INFO - Current price API response status: 200
+2025-10-05 09:43:41,626 - INFO - Found price: 0.0009382, market cap: 938222
+2025-10-05 09:43:42,252 - INFO - Getting current price for contract: 0xf339968b81663d6a7558562fce81f0fca3cb4444
+2025-10-05 09:43:42,252 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/0xf339968b81663d6a7558562fce81f0fca3cb4444
+2025-10-05 09:43:42,376 - INFO - Current price API response status: 200
+2025-10-05 09:43:42,376 - INFO - Found price: 0.0005165, market cap: 516543
+2025-10-05 09:43:42,986 - INFO - Getting current price for contract: EbWx89dZ7cMceY6CAyeK13au7FD4eGata6KV2AyvBLV
+2025-10-05 09:43:42,986 - INFO - Requesting: https://api.dexscreener.com/latest/dex/tokens/EbWx89dZ7cMceY6CAyeK13au7FD4eGata6KV2AyvBLV
+2025-10-05 09:43:43,095 - INFO - Current price API response status: 200
+2025-10-05 09:43:43,095 - INFO - Found price: 0.006624, market cap: 6624147
+2025-10-05 09:43:43,718 - INFO - Contract analysis sent successfully to authorized user
+2025-10-05 09:46:33,026 - INFO - 🛑 Stop command received from user
+2025-10-05 09:46:36,033 - INFO - Disconnecting from 91.108.56.152:443/TcpFull...
+2025-10-05 09:46:36,033 - INFO - Disconnection from 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:46:36,033 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:46:36,033 - ERROR - Error handling trigger message: 
+2025-10-05 09:46:36,033 - ERROR - Unhandled exception on trigger_handler
+Traceback (most recent call last):
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 735, in handle_trigger_message
+    await self.client.disconnect()
+concurrent.futures._base.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python37\lib\site-packages\telethon\client\updates.py", line 574, in _dispatch_update
+    await callback(event)
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1362, in trigger_handler
+    await self.handle_trigger_message(event)
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1172, in handle_trigger_message
+    await event.reply(f"❌ Lỗi: {str(e)}")
+  File "C:\Python\Python37\lib\site-packages\telethon\tl\custom\message.py", line 830, in reply
+    await self.get_input_chat(), *args, **kwargs)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\messages.py", line 926, in send_message
+    result = await self(request)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 72, in _call
+    future = sender.send(request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\network\mtprotosender.py", line 179, in send
+    raise ConnectionError('Cannot send requests while disconnected')
+ConnectionError: Cannot send requests while disconnected
+2025-10-05 09:46:36,049 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:46:36,064 - INFO - 📱 Disconnected from Telegram
+2025-10-05 09:49:43,344 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 09:49:43,396 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:49:43,744 - INFO - Successfully connected to Telegram
+2025-10-05 09:49:43,744 - INFO - 🤖 Bot is ready! Send /filter or /filter_contract message to start...
+2025-10-05 09:49:43,744 - INFO - 📝 Format: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]
+2025-10-05 09:49:43,744 - INFO - 🔗 Format: /filter_contract <group_username> [target_user] [yyyy.mm.dd] [limit]
+2025-10-05 09:49:43,744 - INFO - 💡 Example: /filter @mygroup username 2024.12.15 5000
+2025-10-05 09:49:43,744 - INFO - 💡 Example: /filter_contract @mygroup username 2024.12.15
+2025-10-05 09:49:43,744 - INFO - 📅 Default: No date = today's messages only (UTC+7)
+2025-10-05 09:49:43,744 - INFO - 🧪 Commands: /test (test bot), /time (show time), /timezone (explain timezone), /testmsg (test messages), /testyesterday (test yesterday), /testuser (test username), /testrecent (test recent), /testdate (test date), /testcontract (test contract API), /getuserid (get user ID), /listusers (list users), /debug (debug mode), /stop (stop bot)
+2025-10-05 09:49:43,744 - INFO - 🛑 Commands: /stop or /quit to stop bot, Ctrl+C to force stop
+2025-10-05 09:49:57,743 - INFO - Successfully connected to group: @BNNMEMECHATT
+2025-10-05 09:49:57,744 - INFO - No target date specified, using today's date (UTC+7): 2025-10-05
+2025-10-05 09:49:57,745 - INFO - Today's range (UTC+7): 2025-10-05 00:00:00+07:00 to 2025-10-05 23:59:59.999999+07:00
+2025-10-05 09:49:57,884 - INFO - Message 1: UTC=2025-10-05 02:44:52+00:00, UTC+7=2025-10-05 09:44:52+07:00
+2025-10-05 09:49:57,884 - INFO - Message 2: UTC=2025-10-05 02:44:46+00:00, UTC+7=2025-10-05 09:44:46+07:00
+2025-10-05 09:49:57,885 - INFO - Message 3: UTC=2025-10-05 02:44:43+00:00, UTC+7=2025-10-05 09:44:43+07:00
+2025-10-05 09:49:57,885 - INFO - Message 4: UTC=2025-10-05 02:44:42+00:00, UTC+7=2025-10-05 09:44:42+07:00
+2025-10-05 09:49:57,885 - INFO - Message 5: UTC=2025-10-05 02:44:25+00:00, UTC+7=2025-10-05 09:44:25+07:00
+2025-10-05 09:50:00,939 - INFO - Stopping at message 394 - too old: 2025-10-04 23:29:18+07:00
+2025-10-05 09:50:00,940 - INFO - Retrieved 393 messages from today (2025-10-05) in group @BNNMEMECHATT
+2025-10-05 09:50:00,940 - INFO - Processed 394 messages total, stopped early for efficiency
+2025-10-05 09:50:01,065 - INFO - Searching for contract addresses from all users in 393 messages
+2025-10-05 09:50:01,066 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:50:01,067 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:50:01,067 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:50:01,067 - INFO - Found 2 new contracts in message from landcruizz
+2025-10-05 09:50:01,068 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:50:01,068 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:50:01,068 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:50:01,068 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:50:01,069 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:50:01,069 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:50:01,069 - INFO - Found 1 new contracts in message from MaxLenover
+2025-10-05 09:50:01,069 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:50:01,069 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:50:01,070 - INFO - Found 13 messages with unique contracts from all users
+2025-10-05 09:50:01,070 - INFO - Starting to send contract analysis for 13 messages
+2025-10-05 09:50:01,139 - INFO - Sending contract analysis to Saved Messages for user: Manihold
+2025-10-05 09:50:02,616 - WARNING - No pairs found for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:50:08,450 - WARNING - No pairs found for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:50:10,688 - WARNING - No pairs found for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:50:13,879 - INFO - Contract analysis sent successfully to Saved Messages
+2025-10-05 09:52:02,254 - INFO - 🛑 Stop command received from user
+2025-10-05 09:52:05,263 - INFO - Disconnecting from 91.108.56.152:443/TcpFull...
+2025-10-05 09:52:05,271 - INFO - Disconnection from 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:52:05,282 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:52:05,287 - ERROR - Error handling trigger message: 
+2025-10-05 09:52:05,289 - ERROR - Unhandled exception on trigger_handler
+Traceback (most recent call last):
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 735, in handle_trigger_message
+    try:
+concurrent.futures._base.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python37\lib\site-packages\telethon\client\updates.py", line 574, in _dispatch_update
+    await callback(event)
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1362, in trigger_handler
+    # Auto delete sau 5 phút
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1172, in handle_trigger_message
+    debug_info += f"📝 Tin nhắn có text: {sum(1 for msg in filtered_messages if msg['text'])}\n"
+  File "C:\Python\Python37\lib\site-packages\telethon\tl\custom\message.py", line 830, in reply
+    await self.get_input_chat(), *args, **kwargs)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\messages.py", line 926, in send_message
+    result = await self(request)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 72, in _call
+    future = sender.send(request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\network\mtprotosender.py", line 179, in send
+    raise ConnectionError('Cannot send requests while disconnected')
+ConnectionError: Cannot send requests while disconnected
+2025-10-05 09:52:05,328 - INFO - Not disconnecting (already have no connection)
+2025-10-05 09:52:05,340 - INFO - 📱 Disconnected from Telegram
+2025-10-05 09:55:03,510 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 09:55:03,560 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 09:55:03,967 - INFO - Successfully connected to Telegram
+2025-10-05 09:55:03,968 - INFO - 🤖 Bot is ready! Send /filter or /filter_contract message to start...
+2025-10-05 09:55:03,968 - INFO - 📝 Format: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]
+2025-10-05 09:55:03,969 - INFO - 🔗 Format: /filter_contract <group_username> [target_user] [yyyy.mm.dd] [limit]
+2025-10-05 09:55:03,969 - INFO - 💡 Example: /filter @mygroup username 2024.12.15 5000
+2025-10-05 09:55:03,969 - INFO - 💡 Example: /filter_contract @mygroup username 2024.12.15
+2025-10-05 09:55:03,969 - INFO - 📅 Default: No date = today's messages only (UTC+7)
+2025-10-05 09:55:03,969 - INFO - 🧪 Commands: /test (test bot), /time (show time), /timezone (explain timezone), /testmsg (test messages), /testyesterday (test yesterday), /testuser (test username), /testrecent (test recent), /testdate (test date), /testcontract (test contract API), /getuserid (get user ID), /listusers (list users), /debug (debug mode), /stop (stop bot)
+2025-10-05 09:55:03,969 - INFO - 🛑 Commands: /stop or /quit to stop bot, Ctrl+C to force stop
+2025-10-05 09:55:14,536 - INFO - Authorized user triggered: /filter_contract @BNNMEMECHATT
+2025-10-05 09:55:14,824 - INFO - Successfully connected to group: @BNNMEMECHATT
+2025-10-05 09:55:14,825 - INFO - No target date specified, using today's date (UTC+7): 2025-10-05
+2025-10-05 09:55:14,825 - INFO - Today's range (UTC+7): 2025-10-05 00:00:00+07:00 to 2025-10-05 23:59:59.999999+07:00
+2025-10-05 09:55:14,982 - INFO - Message 1: UTC=2025-10-05 02:44:52+00:00, UTC+7=2025-10-05 09:44:52+07:00
+2025-10-05 09:55:14,983 - INFO - Message 2: UTC=2025-10-05 02:44:46+00:00, UTC+7=2025-10-05 09:44:46+07:00
+2025-10-05 09:55:14,984 - INFO - Message 3: UTC=2025-10-05 02:44:43+00:00, UTC+7=2025-10-05 09:44:43+07:00
+2025-10-05 09:55:14,984 - INFO - Message 4: UTC=2025-10-05 02:44:42+00:00, UTC+7=2025-10-05 09:44:42+07:00
+2025-10-05 09:55:14,984 - INFO - Message 5: UTC=2025-10-05 02:44:25+00:00, UTC+7=2025-10-05 09:44:25+07:00
+2025-10-05 09:55:17,960 - INFO - Stopping at message 394 - too old: 2025-10-04 23:29:18+07:00
+2025-10-05 09:55:17,960 - INFO - Retrieved 393 messages from today (2025-10-05) in group @BNNMEMECHATT
+2025-10-05 09:55:17,960 - INFO - Processed 394 messages total, stopped early for efficiency
+2025-10-05 09:55:18,086 - INFO - Searching for contract addresses from all users in 393 messages
+2025-10-05 09:55:18,087 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:55:18,087 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:55:18,087 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:55:18,087 - INFO - Found 2 new contracts in message from landcruizz
+2025-10-05 09:55:18,088 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:55:18,088 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:55:18,089 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:55:18,089 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:55:18,092 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:55:18,092 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:55:18,092 - INFO - Found 1 new contracts in message from MaxLenover
+2025-10-05 09:55:18,092 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 09:55:18,093 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 09:55:18,093 - INFO - Found 13 messages with unique contracts from all users
+2025-10-05 09:55:18,093 - INFO - Starting to send contract analysis for 13 messages to authorized user
+2025-10-05 09:55:19,611 - WARNING - No pairs found for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 09:55:25,843 - WARNING - No pairs found for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 09:55:28,084 - WARNING - No pairs found for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 09:55:31,609 - INFO - Contract analysis sent successfully to authorized user
+2025-10-05 10:00:18,168 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:18,259 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:18,845 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:19,760 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:20,943 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:21,955 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:22,943 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:23,944 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:25,001 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:26,045 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:26,827 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:28,246 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:29,362 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:30,130 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:31,161 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:31,778 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:00:31,906 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:41:58,444 - INFO - Authorized user triggered: /filter_contract @BNNMEMECHATT
+2025-10-05 10:41:58,709 - INFO - Successfully connected to group: @BNNMEMECHATT
+2025-10-05 10:41:58,709 - INFO - No target date specified, using today's date (UTC+7): 2025-10-05
+2025-10-05 10:41:58,709 - INFO - Today's range (UTC+7): 2025-10-05 00:00:00+07:00 to 2025-10-05 23:59:59.999999+07:00
+2025-10-05 10:41:58,839 - INFO - Message 1: UTC=2025-10-05 03:37:54+00:00, UTC+7=2025-10-05 10:37:54+07:00
+2025-10-05 10:41:58,839 - INFO - Message 2: UTC=2025-10-05 03:37:38+00:00, UTC+7=2025-10-05 10:37:38+07:00
+2025-10-05 10:41:58,840 - INFO - Message 3: UTC=2025-10-05 03:36:02+00:00, UTC+7=2025-10-05 10:36:02+07:00
+2025-10-05 10:41:58,840 - INFO - Message 4: UTC=2025-10-05 03:35:37+00:00, UTC+7=2025-10-05 10:35:37+07:00
+2025-10-05 10:41:58,840 - INFO - Message 5: UTC=2025-10-05 03:20:22+00:00, UTC+7=2025-10-05 10:20:22+07:00
+2025-10-05 10:42:02,928 - INFO - Stopping at message 435 - too old: 2025-10-04 23:29:18+07:00
+2025-10-05 10:42:02,928 - INFO - Retrieved 434 messages from today (2025-10-05) in group @BNNMEMECHATT
+2025-10-05 10:42:02,929 - INFO - Processed 435 messages total, stopped early for efficiency
+2025-10-05 10:42:03,032 - INFO - Searching for contract addresses from all users in 434 messages
+2025-10-05 10:42:03,032 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 10:42:03,033 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 10:42:03,033 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 10:42:03,033 - INFO - Found 2 new contracts in message from landcruizz
+2025-10-05 10:42:03,033 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 10:42:03,033 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 10:42:03,034 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 10:42:03,034 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 10:42:03,034 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 10:42:03,034 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 10:42:03,034 - INFO - Found 1 new contracts in message from MaxLenover
+2025-10-05 10:42:03,035 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 10:42:03,035 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 10:42:03,035 - INFO - Found 13 messages with unique contracts from all users
+2025-10-05 10:42:03,035 - INFO - Starting to send contract analysis for 13 messages to authorized user
+2025-10-05 10:42:04,548 - WARNING - No pairs found for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 10:42:11,538 - WARNING - No pairs found for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 10:42:13,975 - WARNING - No pairs found for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 10:42:17,339 - INFO - Contract analysis sent successfully to authorized user
+2025-10-05 10:47:03,103 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:03,189 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:03,736 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:04,717 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:06,281 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:07,065 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:08,238 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:09,207 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:10,680 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:11,728 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:12,752 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:14,153 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:15,105 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:15,839 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:16,911 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:17,519 - INFO - Auto deleted message after 300 seconds
+2025-10-05 10:47:17,610 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:19:46,587 - INFO - Authorized user triggered: /filter @BNNMEMECHATT TomTom888999 
+2025-10-05 11:19:46,852 - INFO - Successfully connected to group: @BNNMEMECHATT
+2025-10-05 11:19:46,853 - INFO - No target date specified, using today's date (UTC+7): 2025-10-05
+2025-10-05 11:19:46,854 - INFO - Today's range (UTC+7): 2025-10-05 00:00:00+07:00 to 2025-10-05 23:59:59.999999+07:00
+2025-10-05 11:19:46,970 - INFO - Message 1: UTC=2025-10-05 04:19:11+00:00, UTC+7=2025-10-05 11:19:11+07:00
+2025-10-05 11:19:46,970 - INFO - Message 2: UTC=2025-10-05 04:19:09+00:00, UTC+7=2025-10-05 11:19:09+07:00
+2025-10-05 11:19:46,971 - INFO - Message 3: UTC=2025-10-05 04:10:38+00:00, UTC+7=2025-10-05 11:10:38+07:00
+2025-10-05 11:19:46,971 - INFO - Message 4: UTC=2025-10-05 04:10:35+00:00, UTC+7=2025-10-05 11:10:35+07:00
+2025-10-05 11:19:46,971 - INFO - Message 5: UTC=2025-10-05 04:10:07+00:00, UTC+7=2025-10-05 11:10:07+07:00
+2025-10-05 11:19:51,075 - INFO - Stopping at message 494 - too old: 2025-10-04 23:29:18+07:00
+2025-10-05 11:19:51,076 - INFO - Retrieved 493 messages from today (2025-10-05) in group @BNNMEMECHATT
+2025-10-05 11:19:51,076 - INFO - Processed 494 messages total, stopped early for efficiency
+2025-10-05 11:19:51,213 - INFO - Searching for user: 'TomTom888999' in 493 messages
+2025-10-05 11:19:51,213 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,213 - INFO - Message from: Username: GminhSon, First: GminhSon, Last: 🚀🚀🚀
+2025-10-05 11:19:51,214 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,214 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,214 - INFO - Message from: Username: thehai231093, First: 🐈‍⬛ 🍅, Last: Hải
+2025-10-05 11:19:51,214 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,215 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,215 - INFO - Message from: Username: meepleinsaigon, First: MIS, Last: VuKhoiNguyen
+2025-10-05 11:19:51,215 - INFO - Message from: Username: votai612, First: Vitali79, Last: None
+2025-10-05 11:19:51,215 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,216 - INFO - Message from: Username: meepleinsaigon, First: MIS, Last: VuKhoiNguyen
+2025-10-05 11:19:51,216 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,216 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,216 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,216 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,216 - INFO - Message from: Username: tunguyen994, First: Ivannlee1205, Last: None
+2025-10-05 11:19:51,216 - INFO - Message from: Username: meepleinsaigon, First: MIS, Last: VuKhoiNguyen
+2025-10-05 11:19:51,216 - INFO - Message from: Username: meepleinsaigon, First: MIS, Last: VuKhoiNguyen
+2025-10-05 11:19:51,217 - INFO - Message from: Username: meepleinsaigon, First: MIS, Last: VuKhoiNguyen
+2025-10-05 11:19:51,217 - INFO - Message from: Username: meepleinsaigon, First: MIS, Last: VuKhoiNguyen
+2025-10-05 11:19:51,217 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,217 - INFO - Message from: Username: meepleinsaigon, First: MIS, Last: VuKhoiNguyen
+2025-10-05 11:19:51,217 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,217 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,217 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,217 - INFO - Message from: Username: meepleinsaigon, First: MIS, Last: VuKhoiNguyen
+2025-10-05 11:19:51,218 - INFO - Message from: Username: meepleinsaigon, First: MIS, Last: VuKhoiNguyen
+2025-10-05 11:19:51,218 - INFO - Message from: Username: meepleinsaigon, First: MIS, Last: VuKhoiNguyen
+2025-10-05 11:19:51,218 - INFO - Message from: Username: meepleinsaigon, First: MIS, Last: VuKhoiNguyen
+2025-10-05 11:19:51,218 - INFO - Message from: Username: ntl_qtb, First: ntl_qtb, Last: None
+2025-10-05 11:19:51,218 - INFO - Message from: Username: ntl_qtb, First: ntl_qtb, Last: None
+2025-10-05 11:19:51,218 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,218 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,218 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,219 - INFO - Message from: Username: Truongnm93, First: TruongNm93, Last: None
+2025-10-05 11:19:51,219 - INFO - Message from: Username: Truongnm93, First: TruongNm93, Last: None
+2025-10-05 11:19:51,219 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,219 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,219 - INFO - Message from: Username: ntl_qtb, First: ntl_qtb, Last: None
+2025-10-05 11:19:51,219 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,219 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,219 - INFO - Message from: Username: ntl_qtb, First: ntl_qtb, Last: None
+2025-10-05 11:19:51,219 - INFO - Message from: Username: ntl_qtb, First: ntl_qtb, Last: None
+2025-10-05 11:19:51,219 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,219 - INFO - Message from: Username: votai612, First: Vitali79, Last: None
+2025-10-05 11:19:51,220 - INFO - Message from: Username: ntl_qtb, First: ntl_qtb, Last: None
+2025-10-05 11:19:51,220 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,220 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,220 - INFO - Message from: Username: NguyenMinh90, First: Bui Tony, Last: None
+2025-10-05 11:19:51,220 - INFO - Message from: Username: ntl_qtb, First: ntl_qtb, Last: None
+2025-10-05 11:19:51,220 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,220 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,220 - INFO - Message from: Username: ntl_qtb, First: ntl_qtb, Last: None
+2025-10-05 11:19:51,220 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,220 - INFO - Message from: Username: votai612, First: Vitali79, Last: None
+2025-10-05 11:19:51,220 - INFO - Message from: Username: votai612, First: Vitali79, Last: None
+2025-10-05 11:19:51,221 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,221 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,221 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,221 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,221 - INFO - Message from: Username: nhukieu195, First: Mon Ú 🆙 UXUY 🐦 SUI, Last: None
+2025-10-05 11:19:51,221 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,221 - INFO - Message from: Username: Truongnm93, First: TruongNm93, Last: None
+2025-10-05 11:19:51,221 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,221 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,221 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,221 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: NguyenMinh90, First: Bui Tony, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: NguyenMinh90, First: Bui Tony, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,222 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,224 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,224 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,224 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,224 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,224 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,224 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,224 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,224 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,224 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,225 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,225 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,225 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,225 - INFO - Message from: Username: Thuc_Nguyenn, First: Hunter, Last: None
+2025-10-05 11:19:51,225 - INFO - Message from: Username: CoinrankingOfficialBot, First: Coinranking Bot, Last: None
+2025-10-05 11:19:51,225 - INFO - Message from: Username: Huychungbk, First: Chung, Last: Phan
+2025-10-05 11:19:51,225 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,225 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,225 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,225 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,225 - INFO - Message from: Username: dihnaocu, First: Srk, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: MissRose_bot, First: Rose, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: fallinlovewithmeme, First: Mr.PEPE, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: fallinlovewithmeme, First: Mr.PEPE, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: fallinlovewithmeme, First: Mr.PEPE, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: dawn6868, First: 16, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: dawn6868, First: 16, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: dawn6868, First: 16, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: dawn6868, First: 16, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: Truongnm93, First: TruongNm93, Last: None
+2025-10-05 11:19:51,226 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,227 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,227 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,227 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,227 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,227 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,227 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,227 - INFO - Message from: Username: LuckyLoveCrypto, First: Crypto, Last: Love ♥️
+2025-10-05 11:19:51,227 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,227 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,227 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,227 - INFO - Message from: Username: LuckyLoveCrypto, First: Crypto, Last: Love ♥️
+2025-10-05 11:19:51,228 - INFO - Message from: Username: dawn6868, First: 16, Last: None
+2025-10-05 11:19:51,228 - INFO - Message from: Username: adio578, First: Onessa Umaira, Last: None
+2025-10-05 11:19:51,228 - INFO - Message from: Username: adio578, First: Onessa Umaira, Last: None
+2025-10-05 11:19:51,228 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,228 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,228 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,228 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,228 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,228 - INFO - Message from: Username: landcruizz, First: Land, Last: None
+2025-10-05 11:19:51,228 - INFO - Message from: Username: landcruizz, First: Land, Last: None
+2025-10-05 11:19:51,228 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: landcruizz, First: Land, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: landcruizz, First: Land, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: landcruizz, First: Land, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: thanhjube, First: Thanhjube, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: landcruizz, First: Land, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: None, First: Jacky, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,229 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,230 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,231 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,232 - INFO - Message from: Username: Vonokhongtron, First: Nhựt, Last: None
+2025-10-05 11:19:51,235 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,236 - INFO - Message from: Username: GminhSon, First: GminhSon, Last: 🚀🚀🚀
+2025-10-05 11:19:51,236 - INFO - Message from: Username: votai612, First: Vitali79, Last: None
+2025-10-05 11:19:51,236 - INFO - Message from: Username: LenhHoXung838636891, First: Quá, Last: Dương
+2025-10-05 11:19:51,236 - INFO - Message from: Username: LenhHoXung838636891, First: Quá, Last: Dương
+2025-10-05 11:19:51,237 - INFO - Message from: Username: ngocvan1410, First: 2 tỷ vnđ, Last: None
+2025-10-05 11:19:51,237 - INFO - Message from: Username: ngocvan1410, First: 2 tỷ vnđ, Last: None
+2025-10-05 11:19:51,237 - INFO - Message from: Username: ngocvan1410, First: 2 tỷ vnđ, Last: None
+2025-10-05 11:19:51,237 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,237 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,237 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,237 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,237 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,237 - INFO - Message from: Username: Truongnm93, First: TruongNm93, Last: None
+2025-10-05 11:19:51,238 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,238 - INFO - Message from: Username: tunguyen994, First: Ivannlee1205, Last: None
+2025-10-05 11:19:51,238 - INFO - Message from: Username: tunguyen994, First: Ivannlee1205, Last: None
+2025-10-05 11:19:51,238 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,238 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,238 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,238 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,238 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,238 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,238 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,239 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,239 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,239 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,239 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,239 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,239 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,239 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,239 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,240 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,240 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,240 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,240 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,240 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,240 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: HoaLac, First: BeBu, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,241 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,242 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,242 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,242 - INFO - Message from: Username: hold6868, First: Hold, Last: None
+2025-10-05 11:19:51,242 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,242 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,242 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,242 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,243 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,243 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,243 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,243 - INFO - Message from: Username: TomTom888999, First: Tom, Last: Tom
+2025-10-05 11:19:51,243 - INFO - Match found by username: TomTom888999
+2025-10-05 11:19:51,243 - INFO - Message from: Username: TomTom888999, First: Tom, Last: Tom
+2025-10-05 11:19:51,243 - INFO - Match found by username: TomTom888999
+2025-10-05 11:19:51,243 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,243 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,243 - INFO - Message from: Username: votai612, First: Vitali79, Last: None
+2025-10-05 11:19:51,243 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,243 - INFO - Message from: Username: TomTom888999, First: Tom, Last: Tom
+2025-10-05 11:19:51,244 - INFO - Match found by username: TomTom888999
+2025-10-05 11:19:51,245 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,245 - INFO - Message from: Username: votai612, First: Vitali79, Last: None
+2025-10-05 11:19:51,245 - INFO - Message from: Username: votai612, First: Vitali79, Last: None
+2025-10-05 11:19:51,246 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,246 - INFO - Message from: Username: votai612, First: Vitali79, Last: None
+2025-10-05 11:19:51,246 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,246 - INFO - Message from: Username: TomTom888999, First: Tom, Last: Tom
+2025-10-05 11:19:51,246 - INFO - Match found by username: TomTom888999
+2025-10-05 11:19:51,246 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,246 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,246 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,246 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,246 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,247 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,247 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,247 - INFO - Message from: Username: xxmarijuana, First: Marijuana, Last: None
+2025-10-05 11:19:51,247 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,247 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,247 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,247 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,247 - INFO - Message from: Username: xxmarijuana, First: Marijuana, Last: None
+2025-10-05 11:19:51,247 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,247 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,247 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,248 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,248 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,248 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,248 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,248 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,248 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,248 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,248 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,248 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,248 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,248 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,249 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,249 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,249 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,249 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,249 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,249 - INFO - Message from: Username: MaxLenover, First: Max, Last: Lenovo
+2025-10-05 11:19:51,249 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,249 - INFO - Message from: Username: AungThuRain2014, First: Hieu, Last: Pham
+2025-10-05 11:19:51,249 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,249 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,249 - INFO - Message from: Username: NguyenMinh90, First: Bui Tony, Last: None
+2025-10-05 11:19:51,249 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,250 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,250 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,250 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,250 - INFO - Message from: Username: NguyenMinh90, First: Bui Tony, Last: None
+2025-10-05 11:19:51,250 - INFO - Message from: Username: MaxLenover, First: Max, Last: Lenovo
+2025-10-05 11:19:51,250 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,250 - INFO - Message from: Username: CryptoArilines, First: Crypto Arilines🟨, Last: None
+2025-10-05 11:19:51,250 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,250 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,250 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,250 - INFO - Message from: Username: LenhHoXung838636891, First: Quá, Last: Dương
+2025-10-05 11:19:51,250 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,251 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,251 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,251 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,251 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,251 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,251 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,251 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,251 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,251 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,251 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,251 - INFO - Message from: Username: NguyenMinh90, First: Bui Tony, Last: None
+2025-10-05 11:19:51,251 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,252 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,252 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,252 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,252 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,252 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,252 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,252 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,252 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,252 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,252 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,252 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,253 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,253 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,253 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,253 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,253 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,253 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,253 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,253 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,253 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,253 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,253 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,254 - INFO - Message from: Username: GminhSon, First: GminhSon, Last: 🚀🚀🚀
+2025-10-05 11:19:51,254 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,254 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,254 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,254 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,254 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,254 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,254 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,254 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,254 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,255 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,255 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,255 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,255 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,255 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,255 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,255 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,255 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,256 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,256 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,256 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,256 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,256 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,256 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,256 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,256 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,257 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,257 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,257 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,257 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,257 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,257 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,257 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,257 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,257 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,257 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,258 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,258 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,258 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,258 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,258 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,258 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,258 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,258 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,258 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,258 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,258 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,259 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,261 - INFO - Message from: Username: xxmarijuana, First: Marijuana, Last: None
+2025-10-05 11:19:51,261 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,261 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,261 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,261 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,261 - INFO - Message from: Username: xxmarijuana, First: Marijuana, Last: None
+2025-10-05 11:19:51,261 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,261 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,262 - INFO - Message from: Username: AungThuRain2014, First: Hieu, Last: Pham
+2025-10-05 11:19:51,262 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,262 - INFO - Message from: Username: AungThuRain2014, First: Hieu, Last: Pham
+2025-10-05 11:19:51,262 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,262 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,262 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,262 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,262 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,262 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,262 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,262 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,262 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,263 - INFO - Message from: Username: AungThuRain2014, First: Hieu, Last: Pham
+2025-10-05 11:19:51,263 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,263 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,263 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,263 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,263 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,263 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,263 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,263 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,263 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,263 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,264 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,264 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,264 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,264 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,264 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,264 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,264 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,264 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,264 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,264 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,264 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,264 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,265 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,265 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,265 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,265 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,265 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,265 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,265 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,265 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,266 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,266 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,266 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,266 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,266 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,266 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,266 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,266 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,266 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,267 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,267 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,267 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,267 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,267 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,267 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,267 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,267 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,267 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,267 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,267 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,268 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,268 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,268 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,268 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,268 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,268 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,268 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,268 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,268 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,269 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,269 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,269 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,269 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,269 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,269 - INFO - Message from: Username: nguyentriha, First: Hoàng, Last: Hà
+2025-10-05 11:19:51,269 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,269 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,269 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,269 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,270 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,270 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,270 - INFO - Message from: Username: QuangKien93, First: Cafe, Last: Morning
+2025-10-05 11:19:51,270 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,270 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,270 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,270 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,270 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,270 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,270 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,270 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,271 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,271 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,271 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,271 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,271 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,271 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,271 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,271 - INFO - Message from: Username: GminhSon, First: GminhSon, Last: 🚀🚀🚀
+2025-10-05 11:19:51,271 - INFO - Message from: Username: Abcdefhahansns, First: 19, Last: None
+2025-10-05 11:19:51,271 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,271 - INFO - Message from: Username: DAG2811, First: лидер народа, Last: None
+2025-10-05 11:19:51,271 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,272 - INFO - Message from: Username: GminhSon, First: GminhSon, Last: 🚀🚀🚀
+2025-10-05 11:19:51,272 - INFO - Message from: Username: TomTom888999, First: Tom, Last: Tom
+2025-10-05 11:19:51,272 - INFO - Match found by username: TomTom888999
+2025-10-05 11:19:51,272 - INFO - Message from: Username: TomTom888999, First: Tom, Last: Tom
+2025-10-05 11:19:51,272 - INFO - Match found by username: TomTom888999
+2025-10-05 11:19:51,272 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,272 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,272 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,272 - INFO - Message from: Username: Truongnm93, First: TruongNm93, Last: None
+2025-10-05 11:19:51,272 - INFO - Message from: Username: Truongnm93, First: TruongNm93, Last: None
+2025-10-05 11:19:51,272 - INFO - Message from: Username: adio578, First: Onessa Umaira, Last: None
+2025-10-05 11:19:51,272 - INFO - Message from: Username: adio578, First: Onessa Umaira, Last: None
+2025-10-05 11:19:51,273 - INFO - Message from: Username: Truongnm93, First: TruongNm93, Last: None
+2025-10-05 11:19:51,273 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,273 - INFO - Message from: Username: Truongnm93, First: TruongNm93, Last: None
+2025-10-05 11:19:51,273 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,273 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,273 - INFO - Message from: Username: truongtan, First: Ryuk, Last: None
+2025-10-05 11:19:51,273 - INFO - Message from: Username: TreeCapitalBot, First: Tree Capital, Last: None
+2025-10-05 11:19:51,273 - INFO - Message from: Username: GminhSon, First: GminhSon, Last: 🚀🚀🚀
+2025-10-05 11:19:51,273 - INFO - Filtered 6 messages from TomTom888999
+2025-10-05 11:19:51,273 - INFO - Starting to send 6 filtered messages to authorized user
+2025-10-05 11:19:54,032 - INFO - Filtered messages sent successfully to authorized user
+2025-10-05 11:24:46,874 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:24:51,351 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:24:51,570 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:24:51,705 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:24:52,113 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:24:52,552 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:24:52,962 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:24:53,372 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:24:53,793 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:24:54,201 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:24:54,294 - INFO - Auto deleted message after 300 seconds
+2025-10-05 11:29:11,063 - WARNING - Server closed the connection: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-10-05 11:29:11,073 - INFO - Connection closed while receiving data: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-10-05 11:29:11,078 - INFO - Closing current connection to begin reconnect...
+2025-10-05 11:29:11,081 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 11:29:11,082 - INFO - <class 'ConnectionResetError'> during disconnect: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-10-05 11:29:11,083 - WARNING - Attempt 1 at connecting failed: OSError: [Errno 10065] Connect call failed ('91.108.56.152', 443)
+2025-10-05 11:29:12,094 - WARNING - Attempt 2 at connecting failed: OSError: [Errno 10065] Connect call failed ('91.108.56.152', 443)
+2025-10-05 11:29:13,109 - WARNING - Attempt 3 at connecting failed: OSError: [Errno 10065] Connect call failed ('91.108.56.152', 443)
+2025-10-05 11:29:14,110 - WARNING - Attempt 4 at connecting failed: OSError: [Errno 10065] Connect call failed ('91.108.56.152', 443)
+2025-10-05 11:29:15,122 - WARNING - Attempt 5 at connecting failed: OSError: [Errno 10065] Connect call failed ('91.108.56.152', 443)
+2025-10-05 11:29:16,185 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 11:50:06,419 - INFO - Got difference for channel 2385574544 updates
+2025-10-05 11:55:05,850 - INFO - The server closed the connection while sending
+2025-10-05 11:55:05,850 - WARNING - Server closed the connection: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-10-05 11:55:05,850 - INFO - Connection closed while receiving data: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-10-05 11:55:05,850 - INFO - Closing current connection to begin reconnect...
+2025-10-05 11:55:05,850 - INFO - <class 'ConnectionResetError'> during disconnect: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-10-05 11:55:05,850 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 11:55:05,861 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 11:56:24,802 - WARNING - Server closed the connection: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-10-05 11:56:24,802 - INFO - Connection closed while receiving data: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-10-05 11:56:24,802 - INFO - Closing current connection to begin reconnect...
+2025-10-05 11:56:24,802 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 11:56:24,802 - INFO - <class 'ConnectionResetError'> during disconnect: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-10-05 11:56:24,846 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 11:57:06,819 - INFO - 🛑 Stop command received from user
+2025-10-05 11:57:09,813 - INFO - Disconnecting from 91.108.56.152:443/TcpFull...
+2025-10-05 11:57:09,814 - INFO - Disconnection from 91.108.56.152:443/TcpFull complete!
+2025-10-05 11:57:09,814 - INFO - Not disconnecting (already have no connection)
+2025-10-05 11:57:09,814 - ERROR - Error handling trigger message: 
+2025-10-05 11:57:09,814 - ERROR - Unhandled exception on trigger_handler
+Traceback (most recent call last):
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 743, in handle_trigger_message
+    pass
+concurrent.futures._base.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python\Python37\lib\site-packages\telethon\client\updates.py", line 574, in _dispatch_update
+    await callback(event)
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1557, in trigger_handler
+    except Exception as e:
+  File "E:\MySandbox\FilterBot\telegram_flow.py", line 1180, in handle_trigger_message
+    # Gửi thông tin debug
+  File "C:\Python\Python37\lib\site-packages\telethon\tl\custom\message.py", line 830, in reply
+    await self.get_input_chat(), *args, **kwargs)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\messages.py", line 926, in send_message
+    result = await self(request)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 30, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\client\users.py", line 72, in _call
+    future = sender.send(request, ordered=ordered)
+  File "C:\Python\Python37\lib\site-packages\telethon\network\mtprotosender.py", line 179, in send
+    raise ConnectionError('Cannot send requests while disconnected')
+ConnectionError: Cannot send requests while disconnected
+2025-10-05 11:57:09,830 - INFO - Not disconnecting (already have no connection)
+2025-10-05 11:57:09,845 - INFO - 📱 Disconnected from Telegram
+2025-10-05 11:57:14,282 - INFO - Connecting to 91.108.56.152:443/TcpFull...
+2025-10-05 11:57:14,335 - INFO - Connection to 91.108.56.152:443/TcpFull complete!
+2025-10-05 11:57:14,770 - INFO - Successfully connected to Telegram
+2025-10-05 11:57:14,771 - INFO - 🤖 Bot is ready! Send /filter or /filter_contract message to start...
+2025-10-05 11:57:14,771 - INFO - 📝 Format: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]
+2025-10-05 11:57:14,771 - INFO - 🔗 Format: /filter_contract <group_username> [target_user] [yyyy.mm.dd] [limit]
+2025-10-05 11:57:14,771 - INFO - 💡 Example: /filter @mygroup username 2024.12.15 5000
+2025-10-05 11:57:14,771 - INFO - 💡 Example: /filter_contract @mygroup username 2024.12.15
+2025-10-05 11:57:14,771 - INFO - 📅 Default: No date = today's messages only (UTC+7)
+2025-10-05 11:57:14,771 - INFO - 🧪 Commands: /test (test bot), /time (show time), /timezone (explain timezone), /testmsg (test messages), /testyesterday (test yesterday), /testuser (test username), /testrecent (test recent), /testdate (test date), /testcontract (test contract API), /getuserid (get user ID), /listusers (list users), /debug (debug mode), /stop (stop bot)
+2025-10-05 11:57:14,772 - INFO - 🛑 Commands: /stop or /quit to stop bot, Ctrl+C to force stop
+2025-10-05 11:57:23,830 - INFO - Authorized user triggered: /filter_contract @BNNMEMECHATT
+2025-10-05 11:57:24,128 - INFO - Successfully connected to group: @BNNMEMECHATT
+2025-10-05 11:57:24,129 - INFO - No target date specified, using today's date (UTC+7): 2025-10-05
+2025-10-05 11:57:24,129 - INFO - Today's range (UTC+7): 2025-10-05 00:00:00+07:00 to 2025-10-05 23:59:59.999999+07:00
+2025-10-05 11:57:24,271 - INFO - Message 1: UTC=2025-10-05 04:51:33+00:00, UTC+7=2025-10-05 11:51:33+07:00
+2025-10-05 11:57:24,271 - INFO - Message 2: UTC=2025-10-05 04:39:26+00:00, UTC+7=2025-10-05 11:39:26+07:00
+2025-10-05 11:57:24,271 - INFO - Message 3: UTC=2025-10-05 04:29:25+00:00, UTC+7=2025-10-05 11:29:25+07:00
+2025-10-05 11:57:24,272 - INFO - Message 4: UTC=2025-10-05 04:26:00+00:00, UTC+7=2025-10-05 11:26:00+07:00
+2025-10-05 11:57:24,272 - INFO - Message 5: UTC=2025-10-05 04:19:11+00:00, UTC+7=2025-10-05 11:19:11+07:00
+2025-10-05 11:57:28,296 - INFO - Stopping at message 498 - too old: 2025-10-04 23:29:18+07:00
+2025-10-05 11:57:28,297 - INFO - Retrieved 497 messages from today (2025-10-05) in group @BNNMEMECHATT
+2025-10-05 11:57:28,297 - INFO - Processed 498 messages total, stopped early for efficiency
+2025-10-05 11:57:28,405 - INFO - Searching for contract addresses from all users in 497 messages
+2025-10-05 11:57:28,406 - INFO - Found 1 new contracts in message from tgnam201
+2025-10-05 11:57:28,406 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 11:57:28,407 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 11:57:28,407 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 11:57:28,407 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 11:57:28,408 - INFO - Found 2 new contracts in message from landcruizz
+2025-10-05 11:57:28,408 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 11:57:28,408 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 11:57:28,408 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 11:57:28,408 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 11:57:28,408 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 11:57:28,408 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 11:57:28,409 - INFO - Found 1 new contracts in message from MaxLenover
+2025-10-05 11:57:28,409 - INFO - Found 1 new contracts in message from Abcdefhahansns
+2025-10-05 11:57:28,409 - INFO - Found 1 new contracts in message from DAG2811
+2025-10-05 11:57:28,409 - INFO - Found 15 messages with unique contracts from all users
+2025-10-05 11:57:28,409 - INFO - Starting to send contract analysis for 15 messages to authorized user
+2025-10-05 11:57:29,693 - WARNING - No pairs found for contract: 0x4ff1d40fb7b56665bf95d8d8e3a5320de46709a1
+2025-10-05 11:57:36,212 - WARNING - No pairs found for contract: 0x0af1389df3d6049b0aec931aacc09afdd3c74444
+2025-10-05 11:57:38,479 - WARNING - No pairs found for contract: 2f1EA553EDeF7df5Bf4FFa922143A4444
+2025-10-05 11:57:43,720 - INFO - Contract analysis sent successfully to authorized user

@@ -272,15 +272,15 @@ class TelegramFlow:
     async def get_current_token_price(self, contract_address):
         """Lấy giá token hiện tại từ DexScreener API (không cần historical data)"""
         try:
-            logger.info(f"Getting current price for contract: {contract_address}")
+            # logger.info(f"Getting current price for contract: {contract_address}")
             
             async with aiohttp.ClientSession() as session:
                 # Lấy thông tin token hiện tại
                 current_url = f"https://api.dexscreener.com/latest/dex/tokens/{contract_address}"
-                logger.info(f"Requesting: {current_url}")
+                # logger.info(f"Requesting: {current_url}")
                 
                 async with session.get(current_url) as response:
-                    logger.info(f"Current price API response status: {response.status}")
+                    # logger.info(f"Current price API response status: {response.status}")
                     
                     if response.status == 200:
                         current_data = await response.json()
@@ -292,6 +292,7 @@ class TelegramFlow:
                             return {
                                 'current_price': 'N/A',
                                 'current_market_cap': 'N/A',
+                                'token_name': 'Unknown',
                                 'error': 'No pairs found on DexScreener'
                             }
                         
@@ -300,11 +301,17 @@ class TelegramFlow:
                         current_price = main_pair.get('priceUsd', 'N/A')
                         current_market_cap = main_pair.get('marketCap', 'N/A')
                         
-                        logger.info(f"Found price: {current_price}, market cap: {current_market_cap}")
+                        # Lấy tên token từ baseToken
+                        token_name = 'Unknown'
+                        if 'baseToken' in main_pair:
+                            token_name = main_pair['baseToken'].get('name', 'Unknown')
+                        
+                        # logger.info(f"Found price: {current_price}, market cap: {current_market_cap}")
                         
                         return {
                             'current_price': current_price,
-                            'current_market_cap': current_market_cap
+                            'current_market_cap': current_market_cap,
+                            'token_name': token_name
                         }
                     else:
                         logger.error(f"DexScreener API error: {response.status}")
@@ -313,6 +320,7 @@ class TelegramFlow:
                         return {
                             'current_price': 'N/A',
                             'current_market_cap': 'N/A',
+                            'token_name': 'Unknown',
                             'error': f'API error: {response.status}'
                         }
                         
@@ -321,21 +329,22 @@ class TelegramFlow:
             return {
                 'current_price': 'N/A',
                 'current_market_cap': 'N/A',
+                'token_name': 'Unknown',
                 'error': str(e)
             }
     
     async def get_token_price_data(self, contract_address, message_timestamp):
         """Lấy giá token từ DexScreener API"""
         try:
-            logger.info(f"Getting price data for contract: {contract_address}")
+            # logger.info(f"Getting price data for contract: {contract_address}")
             
             async with aiohttp.ClientSession() as session:
                 # Lấy thông tin token hiện tại
                 current_url = f"https://api.dexscreener.com/latest/dex/tokens/{contract_address}"
-                logger.info(f"Requesting: {current_url}")
+                # logger.info(f"Requesting: {current_url}")
                 
                 async with session.get(current_url) as response:
-                    logger.info(f"Current price API response status: {response.status}")
+                    # logger.info(f"Current price API response status: {response.status}")
                     
                     if response.status == 200:
                         current_data = await response.json()
@@ -357,18 +366,18 @@ class TelegramFlow:
                         current_price = main_pair.get('priceUsd', 'N/A')
                         current_market_cap = main_pair.get('marketCap', 'N/A')
                         
-                        logger.info(f"Found price: {current_price}, market cap: {current_market_cap}")
+                        # logger.info(f"Found price: {current_price}, market cap: {current_market_cap}")
                         
                         # Lấy OHLCV data 5 phút
                         ohlcv_url = f"https://api.dexscreener.com/latest/dex/tokens/{contract_address}/ohlc/5m"
-                        logger.info(f"Requesting OHLCV: {ohlcv_url}")
+                        # logger.info(f"Requesting OHLCV: {ohlcv_url}")
                         
                         async with session.get(ohlcv_url) as ohlcv_response:
-                            logger.info(f"OHLCV API response status: {ohlcv_response.status}")
+                            # logger.info(f"OHLCV API response status: {ohlcv_response.status}")
                             
                             if ohlcv_response.status == 200:
                                 ohlcv_data = await ohlcv_response.json()
-                                logger.info(f"OHLCV 5m data received: {len(ohlcv_data.get('ohlcv', []))} candles")
+                                # logger.info(f"OHLCV 5m data received: {len(ohlcv_data.get('ohlcv', []))} candles")
                                 
                                 # Tìm giá gần nhất với thời điểm tin nhắn
                                 historical_price = self.find_historical_price(ohlcv_data, message_timestamp)
@@ -480,17 +489,21 @@ class TelegramFlow:
                 content += f"📅 Thời gian: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n"
                 content += f"📊 Tổng số tin nhắn: 0\n\n"
                 content += "❌ Không tìm thấy contract address nào từ người dùng này."
-                await self.client.send_message(me, content)
+                sent_message = await self.client.send_message(me, content, parse_mode='markdown')
+                # Auto delete sau 5 phút
+                asyncio.create_task(self.auto_delete_message(sent_message, 300))
                 return
             
             # Gửi tin nhắn header
             header = f"🔍 **Contract Analysis từ {target_user}**\n"
             header += f"📅 Thời gian: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n"
             header += f"📊 Tổng số tin nhắn: {len(contract_messages)}\n"
-            header += f"⏰ Sắp xếp theo thời gian tăng dần\n\n"
+            header += f"⏰ Sắp xếp theo thời gian giảm dần (mới nhất trước)\n\n"
             header += "📝 **Phân tích Contract:**\n\n"
             
-            await self.client.send_message(me, header)
+            sent_header = await self.client.send_message(me, header, parse_mode='markdown')
+            # Auto delete header sau 5 phút
+            asyncio.create_task(self.auto_delete_message(sent_header, 300))
             
             # Gửi từng contract analysis
             for i, msg_data in enumerate(contract_messages, 1):
@@ -518,12 +531,15 @@ class TelegramFlow:
                         # Lấy giá token hiện tại
                         price_data = await self.get_current_token_price(contract['address'])
                         if price_data:
-                            content += f"🔗 Contract : {contract['address']}\n"
+                            # Hiển thị tên token nếu có
+                            token_name = price_data.get('token_name', 'Unknown')
+                            content += f"🪙 Token: **{token_name}**\n"
+                            content += f"🔗 Contract: `{contract['address']}`\n"
                             content += f"💰 Giá hiện tại: ${price_data['current_price']}\n"
                             formatted_market_cap = self.format_market_cap(price_data['current_market_cap'])
                             content += f"📈 Market Cap: ${formatted_market_cap}\n"
                         else:
-                            content += f"🔗 Contract : {contract['address']}\n"
+                            content += f"🔗 Contract: `{contract['address']}`\n"
                             content += f"❌ Không thể lấy giá token\n"
                         
                         content += "\n"
@@ -532,10 +548,14 @@ class TelegramFlow:
                     if len(content) > 4000:
                         parts = [content[i:i+4000] for i in range(0, len(content), 4000)]
                         for part in parts:
-                            await self.client.send_message(me, part)
+                            sent_part = await self.client.send_message(me, part, parse_mode='markdown')
+                            # Auto delete sau 5 phút
+                            asyncio.create_task(self.auto_delete_message(sent_part, 300))
                             await asyncio.sleep(0.5)
                     else:
-                        await self.client.send_message(me, content)
+                        sent_content = await self.client.send_message(me, content, parse_mode='markdown')
+                        # Auto delete sau 5 phút
+                        asyncio.create_task(self.auto_delete_message(sent_content, 300))
                         await asyncio.sleep(0.5)
                         
                 except Exception as e:
@@ -661,7 +681,7 @@ class TelegramFlow:
                 content += f"📅 Thời gian: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n"
                 content += f"📊 Tổng số tin nhắn: 0\n\n"
                 content += "❌ Không tìm thấy tin nhắn nào từ người dùng này."
-                await self.client.send_message(me, content)
+                await self.client.send_message(me, content, parse_mode='markdown')
                 logger.info("Sent empty result message to Saved Messages")
                 return
             
@@ -673,7 +693,7 @@ class TelegramFlow:
             header += "📝 **Nội dung tin nhắn:**\n\n"
             
             logger.info("Sending header message to Saved Messages")
-            await self.client.send_message(me, header)
+            await self.client.send_message(me, header, parse_mode='markdown')
             logger.info("Header message sent successfully to Saved Messages")
             
             # Gửi từng tin nhắn riêng biệt
@@ -701,7 +721,7 @@ class TelegramFlow:
                             logger.info(f"Sent part {j+1}/{len(parts)} of message {i} to Saved Messages")
                             await asyncio.sleep(0.5)  # Tránh spam
                     else:
-                        await self.client.send_message(me, content)
+                        await self.client.send_message(me, content, parse_mode='markdown')
                         logger.info(f"Sent message {i} successfully to Saved Messages")
                         await asyncio.sleep(0.3)  # Tránh spam
                     
@@ -865,6 +885,21 @@ class TelegramFlow:
                         
                 except ValueError:
                     await event.reply("❌ Format ngày không đúng! Sử dụng: yyyy.mm.dd")
+                return
+            
+            # Kiểm tra lệnh lấy user ID
+            if message_text == '/getuserid':
+                await event.reply("🔍 **User ID Debug Info:**\n\n")
+                await event.reply("📨 Bot sẽ log tất cả tin nhắn nhận được với thông tin User ID.\n")
+                await event.reply("📝 Để lấy User ID:\n")
+                await event.reply("1. Người cần lấy User ID gửi tin nhắn bất kỳ\n")
+                await event.reply("2. Xem log file để tìm dòng:\n")
+                await event.reply("   `📨 Message from User ID: 123456789, Username: @username, Name: FirstName`\n")
+                await event.reply("3. Copy User ID (số đầu tiên)\n")
+                await event.reply("4. Mở file `config.json` và thay đổi:\n")
+                await event.reply("   `\"authorized_user_id\": 123456789`\n")
+                await event.reply("5. Restart bot\n\n")
+                await event.reply("💡 **Log file location:** `telegram_flow.log`")
                 return
             
             # Kiểm tra lệnh test contract API
@@ -1060,8 +1095,8 @@ class TelegramFlow:
                     # Lấy tất cả contract từ toàn bộ group
                     contract_messages = self.filter_all_messages_with_contracts(messages)
                 
-                # Sắp xếp theo thời gian tăng dần
-                contract_messages.sort(key=lambda x: x['message']['date'])
+                # Sắp xếp theo thời gian giảm dần (mới nhất đến cũ nhất)
+                contract_messages.sort(key=lambda x: x['message']['date'], reverse=True)
                 
                 # Gửi kết quả
                 await self.send_contract_analysis(contract_messages, target_user)
@@ -1075,7 +1110,7 @@ class TelegramFlow:
                 debug_info += f"🔗 Tổng số contract address: {total_contracts}\n"
                 
                 await event.reply(debug_info)
-                await event.reply(f"✅ Hoàn thành! Đã tìm thấy {len(contract_messages)} tin nhắn có contract từ {target_user}\n⏰ Tin nhắn đã được sắp xếp theo thời gian tăng dần\n📱 Kiểm tra Saved Messages để xem phân tích contract!")
+                await event.reply(f"✅ Hoàn thành! Đã tìm thấy {len(contract_messages)} tin nhắn có contract từ {target_user}\n⏰ Tin nhắn đã được sắp xếp theo thời gian giảm dần (mới nhất trước)\n📱 Kiểm tra Saved Messages để xem phân tích contract!")
                 
                 return
             
@@ -1156,6 +1191,372 @@ class TelegramFlow:
             logger.error(f"Error handling trigger message: {e}")
             await event.reply(f"❌ Lỗi: {str(e)}")
     
+    async def handle_authorized_trigger_message(self, event):
+        """Xử lý tin nhắn trigger từ user được phép"""
+        try:
+            message_text = event.message.text
+            if not message_text:
+                return
+            
+            logger.info(f"Authorized user triggered: {message_text}")
+            
+            # Gửi thông báo đang xử lý
+            await event.reply("🔄 Đang xử lý yêu cầu...")
+            
+            # Xử lý lệnh filter_contract
+            if message_text.startswith('/filter_contract'):
+                parts = message_text.split()
+                if len(parts) < 2:
+                    await event.reply("❌ Format không đúng!\nSử dụng: /filter_contract <group_username> [target_user] [yyyy.mm.dd] [limit]")
+                    return
+                
+                group_username = parts[1]
+                target_user = parts[2] if len(parts) > 2 and not parts[2].startswith('202') else None
+                
+                # Xử lý ngày và limit
+                target_date = None
+                limit = 50000
+                
+                # Xác định vị trí của ngày và limit trong parts
+                date_index = 3 if target_user else 2
+                limit_index = 4 if target_user else 3
+                
+                if len(parts) > date_index:
+                    try:
+                        target_date = datetime.strptime(parts[date_index], '%Y.%m.%d').date()
+                        logger.info(f"Authorized contract filter target date (UTC+7): {target_date}")
+                        
+                        if len(parts) > limit_index:
+                            try:
+                                limit = int(parts[limit_index])
+                                logger.info(f"Custom limit: {limit}")
+                            except ValueError:
+                                await event.reply("❌ Limit phải là số!")
+                                return
+                                
+                    except ValueError:
+                        try:
+                            limit = int(parts[date_index])
+                            logger.info(f"Custom limit: {limit}")
+                        except ValueError:
+                            await event.reply("❌ Format không đúng!\nSử dụng: /filter_contract <group_username> [target_user] [yyyy.mm.dd] [limit]")
+                            return
+                
+                # Thông báo tìm kiếm
+                if target_user:
+                    if target_date:
+                        await event.reply(f"🔄 Đang tìm kiếm contract address từ {target_user} trong {group_username} ngày {target_date}...")
+                    else:
+                        await event.reply(f"🔄 Đang tìm kiếm contract address từ {target_user} trong {group_username} hôm nay...")
+                else:
+                    if target_date:
+                        await event.reply(f"🔄 Đang tìm kiếm tất cả contract address trong {group_username} ngày {target_date}...")
+                    else:
+                        await event.reply(f"🔄 Đang tìm kiếm tất cả contract address trong {group_username} hôm nay...")
+                
+                # Lấy tin nhắn từ group
+                messages = await self.get_group_messages(group_username, target_date, limit)
+                
+                # Gửi thông tin debug về số tin nhắn
+                sent_count = await event.reply(f"📊 Tìm thấy {len(messages)} tin nhắn trong group")
+                # Auto delete sau 5 phút
+                asyncio.create_task(self.auto_delete_message(sent_count, 300))
+                
+                # Lọc tin nhắn có contract address
+                if target_user:
+                    contract_messages = self.filter_messages_with_contracts(messages, target_user)
+                else:
+                    contract_messages = self.filter_all_messages_with_contracts(messages)
+                
+                # Sắp xếp theo thời gian giảm dần (mới nhất đến cũ nhất)
+                contract_messages.sort(key=lambda x: x['message']['date'], reverse=True)
+                
+                # Gửi kết quả về cho user được phép
+                await self.send_contract_analysis_to_user(contract_messages, target_user or "All Users", event)
+                
+                # Gửi thông tin debug
+                debug_info = f"🔧 **Contract Debug Info:**\n"
+                debug_info += f"📊 Tổng tin nhắn trong group: {len(messages)}\n"
+                debug_info += f"🎯 Tin nhắn có contract từ {target_user or 'All Users'}: {len(contract_messages)}\n"
+                
+                total_contracts = sum(len(msg['contracts']) for msg in contract_messages)
+                debug_info += f"🔗 Tổng số contract address: {total_contracts}\n"
+                
+                sent_debug = await event.reply(debug_info)
+                # Auto delete debug info sau 5 phút
+                asyncio.create_task(self.auto_delete_message(sent_debug, 300))
+                
+                sent_completion = await event.reply(f"✅ Hoàn thành! Đã tìm thấy {len(contract_messages)} tin nhắn có contract từ {target_user or 'All Users'}\n⏰ Tin nhắn đã được sắp xếp theo thời gian giảm dần (mới nhất trước)\n📱 Kiểm tra tin nhắn để xem phân tích contract!")
+                # Auto delete completion message sau 5 phút
+                asyncio.create_task(self.auto_delete_message(sent_completion, 300))
+                
+            # Xử lý lệnh filter thông thường
+            elif message_text.startswith('/filter'):
+                parts = message_text.split()
+                if len(parts) < 3:
+                    await event.reply("❌ Format không đúng!\nSử dụng: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]")
+                    return
+                
+                group_username = parts[1]
+                target_user = parts[2]
+                
+                # Xử lý ngày và limit
+                target_date = None
+                limit = 10000  # Limit mặc định
+                
+                if len(parts) > 3:
+                    try:
+                        # Kiểm tra xem tham số có phải là ngày không
+                        target_date = datetime.strptime(parts[3], '%Y.%m.%d').date()
+                        logger.info(f"Authorized filter target date (UTC+7): {target_date}")
+                        
+                        # Nếu có tham số tiếp theo, đó là limit
+                        if len(parts) > 4:
+                            try:
+                                limit = int(parts[4])
+                                logger.info(f"Custom limit: {limit}")
+                            except ValueError:
+                                await event.reply("❌ Limit phải là số!")
+                                return
+                                
+                    except ValueError:
+                        # Nếu không phải ngày, có thể là limit
+                        try:
+                            limit = int(parts[3])
+                            logger.info(f"Custom limit: {limit}")
+                        except ValueError:
+                            await event.reply("❌ Format không đúng!\nSử dụng: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]")
+                            return
+                
+                # Thông báo tìm kiếm
+                if target_date:
+                    sent_search = await event.reply(f"🔄 Đang tìm kiếm tin nhắn từ {target_user} trong {group_username} ngày {target_date}...")
+                else:
+                    sent_search = await event.reply(f"🔄 Đang tìm kiếm tin nhắn từ {target_user} trong {group_username} hôm nay...")
+                
+                # Auto delete thông báo tìm kiếm sau 5 phút
+                asyncio.create_task(self.auto_delete_message(sent_search, 300))
+                
+                # Lấy tin nhắn từ group
+                messages = await self.get_group_messages(group_username, target_date, limit)
+                
+                # Gửi thông tin debug về số tin nhắn
+                sent_count = await event.reply(f"📊 Tìm thấy {len(messages)} tin nhắn trong group")
+                # Auto delete sau 5 phút
+                asyncio.create_task(self.auto_delete_message(sent_count, 300))
+                
+                # Lọc tin nhắn theo người dùng
+                filtered_messages = self.filter_messages_by_user(messages, target_user)
+                
+                # Sắp xếp tin nhắn theo thời gian tăng dần (từ cũ đến mới)
+                filtered_messages.sort(key=lambda x: x['date'])
+                
+                # Gửi kết quả trực tiếp cho user được phép (thay vì Saved Messages)
+                await self.send_filtered_messages_to_user(filtered_messages, target_user, event)
+                
+                # Gửi thông tin debug
+                debug_info = f"🔧 **Debug Info:**\n"
+                debug_info += f"📊 Tổng tin nhắn trong group: {len(messages)}\n"
+                debug_info += f"🎯 Tin nhắn từ {target_user}: {len(filtered_messages)}\n"
+                debug_info += f"📝 Tin nhắn có text: {sum(1 for msg in filtered_messages if msg['text'])}\n"
+                debug_info += f"📎 Tin nhắn chỉ có media: {sum(1 for msg in filtered_messages if not msg['text'])}\n"
+                
+                sent_debug = await event.reply(debug_info)
+                # Auto delete debug info sau 5 phút
+                asyncio.create_task(self.auto_delete_message(sent_debug, 300))
+                
+                sent_completion = await event.reply(f"✅ Hoàn thành! Đã tìm thấy {len(filtered_messages)} tin nhắn từ {target_user}\n⏰ Tin nhắn đã được sắp xếp theo thời gian tăng dần\n📱 Kiểm tra tin nhắn để xem nội dung!")
+                # Auto delete completion message sau 5 phút
+                asyncio.create_task(self.auto_delete_message(sent_completion, 300))
+                
+            else:
+                await event.reply("❌ Chỉ hỗ trợ lệnh /filter và /filter_contract")
+                
+        except Exception as e:
+            logger.error(f"Error handling authorized trigger message: {e}")
+            await event.reply(f"❌ Lỗi: {str(e)}")
+    
+    async def auto_delete_message(self, message, delay_seconds):
+        """Tự động xóa message sau delay_seconds"""
+        try:
+            await asyncio.sleep(delay_seconds)
+            await message.delete()
+            logger.info(f"Auto deleted message after {delay_seconds} seconds")
+        except Exception as e:
+            logger.error(f"Failed to auto delete message: {e}")
+    
+    async def reply_with_auto_delete(self, event, text, delay_seconds=300):
+        """Gửi reply và tự động xóa sau delay_seconds"""
+        sent_message = await event.reply(text)
+        asyncio.create_task(self.auto_delete_message(sent_message, delay_seconds))
+        return sent_message
+
+    async def send_filtered_messages_to_user(self, messages, target_user, event):
+        """Gửi tin nhắn đã lọc trực tiếp cho user được phép (với auto delete)"""
+        try:
+            logger.info(f"Starting to send {len(messages)} filtered messages to authorized user")
+            
+            if not messages:
+                content = f"🔍 **Filtered Messages từ {target_user}**\n"
+                content += f"📅 Thời gian: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n"
+                content += f"📊 Tổng số tin nhắn: 0\n\n"
+                content += "❌ Không tìm thấy tin nhắn nào từ người dùng này."
+                sent_message = await event.reply(content, parse_mode='markdown')
+                # Auto delete sau 5 phút
+                asyncio.create_task(self.auto_delete_message(sent_message, 300))
+                return
+            
+            # Gửi tin nhắn header
+            header = f"🔍 **Filtered Messages từ {target_user}**\n"
+            header += f"📅 Thời gian: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n"
+            header += f"📊 Tổng số tin nhắn: {len(messages)}\n"
+            header += f"⏰ Sắp xếp theo thời gian giảm dần (mới nhất trước)\n\n"
+            header += "📝 **Nội dung tin nhắn:**\n\n"
+            
+            sent_header = await event.reply(header, parse_mode='markdown')
+            # Auto delete header sau 5 phút
+            asyncio.create_task(self.auto_delete_message(sent_header, 300))
+            
+            # Gửi từng tin nhắn
+            for i, msg in enumerate(messages, 1):
+                try:
+                    # Format thời gian
+                    message_time = msg['date'].strftime("%d/%m/%Y %H:%M")
+                    
+                    content = f"**{i}.** {message_time} (UTC+7)\n"
+                    
+                    # Hiển thị tên người gửi nếu có
+                    sender_name = ""
+                    if msg.get('sender_username'):
+                        sender_name = f"@{msg['sender_username']}"
+                    elif msg.get('sender_first_name'):
+                        sender_name = msg['sender_first_name']
+                        if msg.get('sender_last_name'):
+                            sender_name += f" {msg['sender_last_name']}"
+                    
+                    if sender_name:
+                        content += f"👤 {sender_name}\n"
+                    
+                    # Nội dung tin nhắn
+                    if msg['text']:
+                        content += f"💬 {msg['text']}\n"
+                    else:
+                        content += f"📎 [Media only - no text]\n"
+                    
+                    content += "\n"
+                    
+                    # Chia nhỏ tin nhắn nếu quá dài
+                    if len(content) > 4000:
+                        parts = [content[i:i+4000] for i in range(0, len(content), 4000)]
+                        for part in parts:
+                            sent_part = await event.reply(part, parse_mode='markdown')
+                            # Auto delete sau 5 phút
+                            asyncio.create_task(self.auto_delete_message(sent_part, 300))
+                            await asyncio.sleep(0.5)
+                    else:
+                        sent_content = await event.reply(content, parse_mode='markdown')
+                        # Auto delete sau 5 phút
+                        asyncio.create_task(self.auto_delete_message(sent_content, 300))
+                        await asyncio.sleep(0.3)
+                        
+                except Exception as e:
+                    logger.error(f"Error sending filtered message {i}: {e}")
+                    continue
+            
+            logger.info("Filtered messages sent successfully to authorized user")
+            
+        except Exception as e:
+            logger.error(f"Error sending filtered messages to user: {e}")
+            await event.reply(f"❌ Lỗi khi gửi tin nhắn: {str(e)}")
+
+    async def send_contract_analysis_to_user(self, contract_messages, target_user, event):
+        """Gửi phân tích contract address về cho user được phép"""
+        try:
+            logger.info(f"Starting to send contract analysis for {len(contract_messages)} messages to authorized user")
+            
+            if not contract_messages:
+                content = f"🔍 **Contract Analysis từ {target_user}**\n"
+                content += f"📅 Thời gian: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n"
+                content += f"📊 Tổng số tin nhắn: 0\n\n"
+                content += "❌ Không tìm thấy contract address nào từ người dùng này."
+                sent_message = await event.reply(content, parse_mode='markdown')
+                # Auto delete sau 5 phút
+                asyncio.create_task(self.auto_delete_message(sent_message, 300))
+                return
+            
+            # Gửi tin nhắn header
+            header = f"🔍 **Contract Analysis từ {target_user}**\n"
+            header += f"📅 Thời gian: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n"
+            header += f"📊 Tổng số tin nhắn: {len(contract_messages)}\n"
+            header += f"⏰ Sắp xếp theo thời gian giảm dần (mới nhất trước)\n\n"
+            header += "📝 **Phân tích Contract:**\n\n"
+            
+            sent_header = await event.reply(header, parse_mode='markdown')
+            # Auto delete header sau 5 phút
+            asyncio.create_task(self.auto_delete_message(sent_header, 300))
+            
+            # Gửi từng contract analysis
+            for i, msg_data in enumerate(contract_messages, 1):
+                try:
+                    msg = msg_data['message']
+                    contracts = msg_data['contracts']
+                    
+                    content = f"**{i}.** {msg['date'].strftime('%d/%m/%Y %H:%M')} (UTC+7)\n"
+                    
+                    # Hiển thị tên người gửi nếu có
+                    sender_name = ""
+                    if msg.get('sender_username'):
+                        sender_name = f"@{msg['sender_username']}"
+                    elif msg.get('sender_first_name'):
+                        sender_name = msg['sender_first_name']
+                        if msg.get('sender_last_name'):
+                            sender_name += f" {msg['sender_last_name']}"
+                    
+                    if sender_name:
+                        content += f"👤 {sender_name}\n"
+                    
+                    content += f"💬 {msg['text'][:200]}{'...' if len(msg['text']) > 200 else ''}\n\n"
+                    
+                    for contract in contracts:
+                        # Lấy giá token hiện tại
+                        price_data = await self.get_current_token_price(contract['address'])
+                        if price_data:
+                            # Hiển thị tên token nếu có
+                            token_name = price_data.get('token_name', 'Unknown')
+                            content += f"🪙 Token: **{token_name}**\n"
+                            content += f"🔗 Contract: `{contract['address']}`\n"
+                            content += f"💰 Giá hiện tại: ${price_data['current_price']}\n"
+                            formatted_market_cap = self.format_market_cap(price_data['current_market_cap'])
+                            content += f"📈 Market Cap: ${formatted_market_cap}\n"
+                        else:
+                            content += f"🔗 Contract: `{contract['address']}`\n"
+                            content += f"❌ Không thể lấy giá token\n"
+                        
+                        content += "\n"
+                    
+                    # Chia nhỏ tin nhắn nếu quá dài
+                    if len(content) > 4000:
+                        parts = [content[i:i+4000] for i in range(0, len(content), 4000)]
+                        for part in parts:
+                            sent_part = await event.reply(part, parse_mode='markdown')
+                            # Auto delete sau 5 phút
+                            asyncio.create_task(self.auto_delete_message(sent_part, 300))
+                            await asyncio.sleep(0.5)
+                    else:
+                        sent_content = await event.reply(content, parse_mode='markdown')
+                        # Auto delete sau 5 phút
+                        asyncio.create_task(self.auto_delete_message(sent_content, 300))
+                        await asyncio.sleep(0.5)
+                        
+                except Exception as e:
+                    logger.error(f"Error sending contract analysis {i}: {e}")
+                    continue
+            
+            logger.info("Contract analysis sent successfully to authorized user")
+            
+        except Exception as e:
+            logger.error(f"Error sending contract analysis to user: {e}")
+    
     async def run(self):
         """Chạy bot"""
         if not self.config:
@@ -1165,10 +1566,29 @@ class TelegramFlow:
         if not await self.start_client():
             return
         
-        # Đăng ký event handler cho tin nhắn trigger
+        # Đăng ký event handler cho tin nhắn trigger từ chính mình
         @self.client.on(events.NewMessage(from_users='me'))
         async def trigger_handler(event):
             await self.handle_trigger_message(event)
+        
+        # Đăng ký event handler cho tin nhắn trigger từ user được phép
+        @self.client.on(events.NewMessage)
+        async def authorized_trigger_handler(event):
+            # Debug: Log tất cả tin nhắn để lấy user_id
+            if hasattr(event.message, 'from_id') and event.message.from_id:
+                sender_id = event.message.from_id.user_id if hasattr(event.message.from_id, 'user_id') else event.message.from_id
+                sender_username = getattr(event.message.sender, 'username', 'No username')
+                sender_first_name = getattr(event.message.sender, 'first_name', 'No first name')
+                
+                # Log thông tin user để debug (đã tắt)
+                # logger.info(f"📨 Message from User ID: {sender_id}, Username: @{sender_username}, Name: {sender_first_name}")
+                # logger.info(f"📝 Message text: {event.message.text}")
+                
+                # Lấy authorized_user_id từ config
+                authorized_user_id = self.config.get('authorized_user_id', None)
+                
+                if authorized_user_id and sender_id == authorized_user_id:
+                    await self.handle_authorized_trigger_message(event)
         
         logger.info("🤖 Bot is ready! Send /filter or /filter_contract message to start...")
         logger.info("📝 Format: /filter <group_username> <target_user> [yyyy.mm.dd] [limit]")
@@ -1176,7 +1596,7 @@ class TelegramFlow:
         logger.info("💡 Example: /filter @mygroup username 2024.12.15 5000")
         logger.info("💡 Example: /filter_contract @mygroup username 2024.12.15")
         logger.info("📅 Default: No date = today's messages only (UTC+7)")
-        logger.info("🧪 Commands: /test (test bot), /time (show time), /timezone (explain timezone), /testmsg (test messages), /testyesterday (test yesterday), /testuser (test username), /testrecent (test recent), /testdate (test date), /testcontract (test contract API), /listusers (list users), /debug (debug mode), /stop (stop bot)")
+        logger.info("🧪 Commands: /test (test bot), /time (show time), /timezone (explain timezone), /testmsg (test messages), /testyesterday (test yesterday), /testuser (test username), /testrecent (test recent), /testdate (test date), /testcontract (test contract API), /getuserid (get user ID), /listusers (list users), /debug (debug mode), /stop (stop bot)")
         logger.info("🛑 Commands: /stop or /quit to stop bot, Ctrl+C to force stop")
         
         try:

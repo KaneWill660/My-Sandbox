@@ -2,11 +2,13 @@
     "api_id": "xxx",
     "api_hash": "xxx",
     "phone_number": "xxx",
+    "authorized_user_id": xxx,
     "description": "Cấu hình cho Telegram Flow Bot",
     "instructions": {
         "step1": "Lấy API ID và API Hash từ https://my.telegram.org/apps",
         "step2": "Thay thế YOUR_API_ID và YOUR_API_HASH bằng giá trị thực",
         "step3": "Thay thế phone_number bằng số điện thoại của bạn",
-        "step4": "Lưu file và chạy script"
+        "step4": "Thay thế authorized_user_id bằng User ID của người được phép trigger bot",
+        "step5": "Lưu file và chạy script"
     }
 }
