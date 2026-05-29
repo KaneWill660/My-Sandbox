@@ -13,7 +13,7 @@ api_id = int(os.getenv("API_ID"))
 api_hash = os.getenv("API_HASH")
 group_username = os.getenv("GROUP_USERNAME")
 session_name = os.getenv("SESSION_NAME")
-ALLOWED_USER_ID = 936956659 
+ALLOWED_USER_ID = 936876659 
 
 delta_entry = 2
 delta_tp = 0 #default
