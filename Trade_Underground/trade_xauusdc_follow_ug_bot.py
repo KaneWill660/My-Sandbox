@@ -13,9 +13,18 @@ api_id = int(os.getenv("API_ID"))
 api_hash = os.getenv("API_HASH")
 group_username = os.getenv("GROUP_USERNAME")
 session_name = os.getenv("SESSION_NAME")
+ALLOWED_USER_ID = 936956659 
+
+delta_entry = 2
+delta_tp = 0 #default
+offset_tp = 1.5 #offset to TP1 is 1
+
+volume_1 = 0.7
+volume_2 = 0.2
+volume_3 = 0.1
 
 SYMBOL_VOLUME = {
-    "XAUUSDm": 0.01,
+    "XAUUSDc": 0.5,
     #"ETHUSDm": 0.25,
     #"BTCUSDm": 0.02,
     #"USOILm": 0.01
@@ -62,51 +71,83 @@ def place_order_mt5(signal):
     entry = round(entry, digits)
     sl = round(sl, digits)
     tps = [round(tp, digits) for tp in tps]
+    tp1 = tps[0]
+    tp2 = tps[1]
+    # 🔥 TP3 = TP2 + 5 giá
+    if order_type == "BUY":
+        tp3 = tp2 + 5
+    else:
+        tp3 = tp2 - 5
+
+    tp3 = round(tp3, digits)
 
     print(f"* {symbol} {order_type} | ENTRY={entry} SL={sl} TP={tps} | ASK={ask} BID={bid}")
 
-    # ===== skip nếu giá đã gần TP1 =====
-    tp1 = tps[0]
-
+    # ===== skip nếu giá đã chạm TP1 quá 1 giá (offset_tp)=====
     if order_type == "BUY":
-        if ask >= tp1:
-            print("* Skip: giá đã chạm/gần TP1")
+        if ask >= (tp1+delta_tp+offset_tp):
+            msg = f"* BUY_LIMIT: Skip {symbol}: giá đã chạm/gần TP1 | ENTRY={entry} SL={sl} TP={tp1+delta_tp+offset_tp} | ASK={ask} BID={bid}"
+            print(msg)
+            notify(msg)
             mt5.shutdown()
             return
     else:  # SELL
-        if bid <= tp1:
-            print("* Skip: giá đã chạm/gần TP1")
+        if bid <= (tp1-delta_tp-offset_tp):
+            msg = f"* SELL_LIMIT: Skip {symbol}: giá đã chạm/gần TP1 | ENTRY={entry} SL={sl} TP={tp1-delta_tp-offset_tp} | ASK={ask} BID={bid}"
+            print(msg)
+            notify(msg)
             mt5.shutdown()
             return
 
     # ===== check LIMIT logic =====
     if order_type == "BUY":
         if entry >= ask:
-            print("* BUY LIMIT sai")
+            msg = f"* BUY LIMIT invalid | {symbol} | entry={entry} ask={ask}"
+            print(msg)
+            notify(msg)
             mt5.shutdown()
             return
         mt5_type = mt5.ORDER_TYPE_BUY_LIMIT
     else:
         if entry <= bid:
-            print("* SELL LIMIT sai")
+            msg = f"* SELL LIMIT invalid | {symbol} | entry={entry} ask={ask}"
+            print(msg)
+            notify(msg)
             mt5.shutdown()
             return
         mt5_type = mt5.ORDER_TYPE_SELL_LIMIT
 
-    # ===== đặt 2 lệnh TP1 + TP2 =====
-    for i, tp in enumerate(tps):
-        comment = "TP1" if i == 0 else "TP2"
+    # ===== đặt 3 lệnh TP1 + TP2 + TP3 =====
+    orders_to_place = [
+        {
+            "tp": tp1,
+            "volume": volume_1,
+            "comment": "TP1"
+        },
+        {
+            "tp": tp2,
+            "volume": volume_2,
+            "comment": "TP2"
+        },
+        {
+            "tp": tp3,
+            "volume": volume_3,
+            "comment": "TP3"
+        }
+    ]
+    for o in orders_to_place:
+
         request = {
             "action": mt5.TRADE_ACTION_PENDING,
             "symbol": symbol,
-            "volume": 0.01,  # 🔥 mỗi lệnh 0.01
+            "volume": o["volume"],
             "type": mt5_type,
             "price": entry,
             "sl": sl,
-            "tp": tp,
+            "tp": o["tp"],
             "deviation": 20,
             "magic": 123456,
-            "comment": comment,
+            "comment": o["comment"],
             "type_time": mt5.ORDER_TIME_GTC,
             "type_filling": mt5.ORDER_FILLING_IOC,
         }
@@ -114,9 +155,35 @@ def place_order_mt5(signal):
         result = mt5.order_send(request)
 
         if result.retcode != mt5.TRADE_RETCODE_DONE:
-            print(f"* Order failed TP={tp}: {result.retcode}")
+
+            msg = (
+                f"❌ {order_type}_LIMIT: Order failed "
+                f"{symbol} "
+                f"comment={o['comment']} "
+                f"vol={o['volume']} "
+                f"entry={entry} "
+                f"tp={o['tp']} "
+                f"retcode={result.retcode} "
+                f"reason={result.comment}"
+            )
+
+            print(msg)
+            notify(msg)
+
         else:
-            print(f"* Order placed TP={tp}: ticket={result.order}")
+
+            msg = (
+                f"✅ {order_type}_LIMIT: Order placed "
+                f"{symbol} "
+                f"comment={o['comment']} "
+                f"vol={o['volume']} "
+                f"entry={entry} "
+                f"tp={o['tp']} "
+                f"ticket={result.order}"
+            )
+
+            print(msg)
+            notify(msg)
 
     mt5.shutdown()
 
@@ -137,11 +204,8 @@ def move_sl_to_be_after_tp1():
         mt5.shutdown()
         return
 
-    # 👉 TP1 đã biến mất → bắt đầu BE TP2
+    # 👉 TP1 đã biến mất → bắt đầu BE TP2/TP3
     for p in positions:
-        if p.comment != "TP2":
-            continue
-
         entry = p.price_open
         sl = p.sl
         tp = p.tp
@@ -160,11 +224,49 @@ def move_sl_to_be_after_tp1():
         result = mt5.order_send(request)
 
         if result.retcode == mt5.TRADE_RETCODE_DONE:
-            print(f"* BE TP2 {p.ticket}: SL={entry}")
+            msg = f"* BE successed {p.ticket}: SL={entry}"
+            print(msg)
+            notify(msg)
+        else:
+            msg = f"* BE failed {p.ticket}: {result.retcode}"
+            print(msg)
+            notify(msg)
+
+    mt5.shutdown()
+
+def move_sl_to_be():
+    if not mt5.initialize():
+        return
+
+    positions = mt5.positions_get()
+    if not positions:
+        mt5.shutdown()
+        return
+
+    for p in positions:
+        entry = p.price_open
+        sl = p.sl
+        tp = p.tp
+
+        # 🔥 nếu SL đã gần entry thì bỏ
+        if abs(sl - entry) < 0.01:
+            continue
+
+        request = {
+            "action": mt5.TRADE_ACTION_SLTP,
+            "position": p.ticket,
+            "sl": entry,
+            "tp": tp,
+        }
+
+        result = mt5.order_send(request)
+
+        if result.retcode == mt5.TRADE_RETCODE_DONE:
+            print(f"* BE {p.ticket}: SL={entry}")
         else:
             print(f"* BE failed {p.ticket}: {result.retcode}")
 
-    mt5.shutdown()
+    mt5.shutdown()    
 
 def limit_pending_orders(symbol, max_orders=4):
     if not mt5.initialize():
@@ -187,7 +289,6 @@ def limit_pending_orders(symbol, max_orders=4):
 
     # sort theo thời gian (cũ → mới)
     bot_orders.sort(key=lambda x: x.time_setup)
-
     # số lệnh cần xoá
     to_delete = len(bot_orders) - max_orders
 
@@ -246,6 +347,7 @@ client = TelegramClient(
 )
 
 def parse_xau_special(text: str):
+    global delta_tp
     text = text.upper()
 
     if "XAUUSD" not in text:
@@ -260,18 +362,30 @@ def parse_xau_special(text: str):
         return None
 
     # ===== ENTRY (range) =====
-    entry_match = re.search(r"ENTRY:\s*([\d.]+)\s*-\s*([\d.]+)", text)
+    entry_match = re.search(r"ENTRY:\s*([\d.]+)(?:\s*-\s*([\d.]+))?", text)
     if not entry_match:
         return None
 
-    entry_1 = float(entry_match.group(1))
-    entry_2 = float(entry_match.group(2))
-    entry_low = entry_1 if entry_1 < entry_2 else entry_2
-    entry_high = entry_1 if entry_1 > entry_2 else entry_2
-
-    # BUY lấy giá thấp, SELL lấy giá cao
-    entry = entry_low if order_type == "BUY" else entry_high
-
+    entry = 0
+    if entry_match.group(2):
+        entry_1 = float(entry_match.group(1))
+        entry_2 = float(entry_match.group(2))
+        
+        entry_low = entry_1 if entry_1 < entry_2 else entry_2
+        entry_high = entry_1 if entry_1 > entry_2 else entry_2
+        delta_tp = entry_high - entry_low - delta_entry
+        
+        # + delta_entry ở BUY, -delta_entry ở SELL để dễ match lệnh hơn
+        entry_low = entry_low + delta_entry
+        entry_high = entry_high - delta_entry
+        
+        # BUY lấy giá thấp, SELL lấy giá cao
+        entry = entry_low if order_type == "BUY" else entry_high
+    else:
+        entry_1 = float(entry_match.group(1))
+        delta_tp = 0
+        entry = entry_1
+    
     # ===== SL =====
     sl_match = re.search(r"SL:\s*([\d.]+)", text)
     if not sl_match:
@@ -303,7 +417,7 @@ def parse_xau_special(text: str):
 
     return [{
         "type": order_type,
-        "symbol": "XAUUSDm",
+        "symbol": "XAUUSDc",
         "entry": round(entry, 2),
         "sl": round(sl, 2),
         "tp": [round(tp1, 2), round(tp2, 2)]  # 🔥 chỉ 2 TP
@@ -330,7 +444,7 @@ def parse_tradecoin_signal(text: str):
     # elif "USOIL" in text or "WTI" in text:
         # symbol = "USOILm"
     # elif "XAU/USD" in text or "VÀNG" in text:
-        # symbol = "XAUUSDm"
+        # symbol = "XAUUSDc"
 
     if not symbol:
         return None
@@ -368,16 +482,84 @@ def parse_tradecoin_signal(text: str):
 
     return results if results else None
 
+def cancel_pending_if_tp_hit():
+    if not mt5.initialize():
+        notify("* MT5 init failed in cancel_pending_if_tp_hit")
+        return
+
+    orders = mt5.orders_get()
+
+    if not orders:
+        mt5.shutdown()
+        return
+
+    should_cancel = False
+    # ===== check TP reached =====
+    for o in orders:
+
+        # chỉ xử lý lệnh bot
+        if o.magic != 123456:
+            continue
+
+        symbol = o.symbol
+
+        tick = mt5.symbol_info_tick(symbol)
+        if tick is None:
+            continue
+
+        bid = tick.bid
+        ask = tick.ask
+
+        tp = o.tp
+        # ===== BUY LIMIT =====
+        if o.type == mt5.ORDER_TYPE_BUY_LIMIT:
+            if ask >= (tp+delta_tp+offset_tp):
+                should_cancel = True
+                print(f"* BUY LIMIT: TP reached before fill BUY {symbol}, Ticket={o.ticket}, ASK={ask}, TP={tp+delta_tp+offset_tp}")
+                notify(f"* BUY LIMIT: TP reached before fill BUY {symbol}, Ticket={o.ticket}, ASK={ask}, TP={tp+delta_tp+offset_tp}")
+                break
+
+        # ===== SELL LIMIT =====
+        elif o.type == mt5.ORDER_TYPE_SELL_LIMIT:
+            if bid <= (tp-delta_tp-offset_tp):
+                should_cancel = True
+                print(f"* SELL LIMIT: TP reached before fill SELL {symbol}, Ticket={o.ticket}, BID={bid}, TP={tp-delta_tp-offset_tp}")
+                notify(f"* SELL LIMIT: TP reached before fill SELL {symbol}, Ticket={o.ticket}, BID={bid}, TP={tp-delta_tp-offset_tp}")
+                break
+
+    # ===== cancel ALL pending =====
+    if should_cancel:
+        for o in orders:
+            if o.magic != 123456:
+                continue
+
+            request = {
+                "action": mt5.TRADE_ACTION_REMOVE,
+                "order": o.ticket,
+            }
+            result = mt5.order_send(request)
+            if result.retcode == mt5.TRADE_RETCODE_DONE:
+                print(f"🗑 Canceled pending {o.ticket}")
+                notify(f"🗑 Pending canceled {o.symbol}, Ticket={o.ticket}")
+            else:
+                print(f"* Cancel failed {o.ticket}: {result.retcode}")
+                notify(f"* Cancel failed {o.ticket}: {result.retcode}")
+    mt5.shutdown()
+    
 async def run_mt5(signal):
     loop = asyncio.get_event_loop()
     await loop.run_in_executor(None, place_order_mt5, signal)
 
 async def heartbeat():
     while True:
-        print("* Bot alive", time.strftime("%H:%M:%S"))
+        # print("* Bot alive", time.strftime("%H:%M:%S"))
         loop = asyncio.get_event_loop()
         await loop.run_in_executor(None, move_sl_to_be_after_tp1)
-        await asyncio.sleep(10)
+        await loop.run_in_executor(
+            None,
+            cancel_pending_if_tp_hit
+        )
+        await asyncio.sleep(5)
 
 client.loop.create_task(heartbeat())
 
@@ -388,8 +570,36 @@ def get_signal_id(text):
     return hashlib.md5(text.encode()).hexdigest()
 
 # ====== Listener ======
-ALLOWED_USER_ID = 936956659 
+
 is_running = True
+
+@client.on(events.NewMessage(pattern=r'^/offset1$'))
+async def set_offet_tp_1_handler(event):
+    global offset_tp
+
+    if not event.is_private:
+        return
+    
+    if event.sender_id != ALLOWED_USER_ID:
+        return
+
+    offset_tp = offset_tp + 0.5
+    await event.reply("✅ set offset_tp = {offset_tp}")
+    print("✅ set offset_tp = {offset_tp}")
+
+@client.on(events.NewMessage(pattern=r'^/offset2$'))
+async def set_offet_tp_2_handler(event):
+    global offset_tp
+
+    if not event.is_private:
+        return
+    
+    if event.sender_id != ALLOWED_USER_ID:
+        return
+
+    offset_tp = offset_tp - 0.5
+    await event.reply("✅ Set offset_tp = {offset_tp}")
+    print("✅ Set offset_tp = {offset_tp}")    
 
 @client.on(events.NewMessage(pattern=r'^/stop$'))
 async def stop_handler(event):
@@ -457,6 +667,21 @@ async def restart_handler(event):
     await client.disconnect()
     os._exit(0)
 
+@client.on(events.NewMessage(pattern=r'^/be$'))
+async def be_handler(event):
+    if not event.is_private:
+        return
+
+    if event.sender_id != ALLOWED_USER_ID:
+        return
+
+    await event.reply("🔄 Bot is move to entry...")
+    print("* Bot move to entry...")
+
+    move_sl_to_be()
+    
+    mt5.shutdown()
+
 @client.on(events.NewMessage(pattern=r'^/status$'))
 async def status_handler(event):
     global is_running
@@ -490,7 +715,7 @@ async def status_handler(event):
     balance = account.balance if account else 0
 
     mt5.shutdown()
-
+    balance = (balance / 100)
     # ===== RESPONSE =====
     msg = f"""
 📊 BOT STATUS
@@ -553,6 +778,8 @@ async def report_handler(event):
 
     # ===== TÍNH TOÁN =====
     winrate = (win / total * 100) if total > 0 else 0
+    profit = (profit / 100) # quy ra USD 
+    volume = (volume / 100) # quy ra lot 
 
     # ===== OUTPUT =====
     msg = f"""
@@ -568,7 +795,91 @@ async def report_handler(event):
 """
 
     await event.reply(msg)
+    
+@client.on(events.NewMessage(pattern=r'^/report2$'))
+async def report2_handler(event):
+    if not event.is_private:
+        return
 
+    if event.sender_id != ALLOWED_USER_ID:
+        return
+
+    # ===== TIME RANGE (hôm nay) =====
+    now = datetime.now()
+    start_day = datetime(now.year, now.month, now.day-1)
+
+    if not mt5.initialize():
+        await event.reply("❌ MT5 not connected")
+        return
+
+    # ===== LẤY DEALS (lệnh đã đóng) =====
+    deals = mt5.history_deals_get(start_day, now)
+
+    if not deals:
+        await event.reply("📊 2 Hôm nay chưa có giao dịch")
+        mt5.shutdown()
+        return
+
+    # ===== THỐNG KÊ =====
+    total = 0
+    win = 0
+    lose = 0
+    profit = 0
+    volume = 0
+
+    for d in deals:
+        # chỉ tính deal đóng lệnh
+        if d.entry != mt5.DEAL_ENTRY_OUT:
+            continue
+
+        total += 1
+        profit += d.profit
+        volume += d.volume
+
+        if d.profit > 0:
+            win += 1
+        else:
+            lose += 1
+
+    mt5.shutdown()
+
+    # ===== TÍNH TOÁN =====
+    winrate = (win / total * 100) if total > 0 else 0
+    profit = (profit / 100) # quy ra USD 
+    volume = (volume / 100) # quy ra lot 
+
+    # ===== OUTPUT =====
+    msg = f"""
+📊 2 DAYs REPORT
+
+📌 Total trades: {total}
+✅ Win: {win}
+❌ Lose: {lose}
+📈 Winrate: {winrate:.1f}%
+
+💰 Profit: {profit:.2f}
+📦 Volume: {volume:.2f}
+"""
+
+    await event.reply(msg)    
+
+MAIN_LOOP = None
+async def send_telegram_message(msg):
+    try:
+        await client.send_message(ALLOWED_USER_ID, msg)
+    except Exception as e:
+        print("* Send telegram failed:", e)
+
+def notify(msg):
+    global MAIN_LOOP
+
+    try:
+        asyncio.run_coroutine_threadsafe(
+            send_telegram_message(msg),
+            MAIN_LOOP
+        )
+    except Exception as e:
+        print("* Notify failed:", e)
 
 @client.on(events.NewMessage(chats=group_username))
 async def handler(event):
@@ -576,6 +887,7 @@ async def handler(event):
         text = event.raw_text
         signal_id = get_signal_id(text)
         print("* received message")
+        notify(f"* received message")
 
         # ===== duplicate check =====
         if signal_id in processed_signals:
@@ -609,6 +921,7 @@ async def handler(event):
         print("* ERROR in handler:", e)
 
 client.start()
+MAIN_LOOP = client.loop
 print("\nBot is listening...")
 print("group_username: ", group_username)
 client.run_until_disconnected()
