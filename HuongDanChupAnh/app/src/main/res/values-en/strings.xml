@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="perm_title">Camera permission needed</string>
+    <string name="perm_body">Photo Coach needs the camera to show the viewfinder and coach your shots. Frame analysis runs on the device; photos never leave your phone unless you ask.</string>
+    <string name="perm_body_storage">On this Android version the app also needs storage permission to save photos to your gallery.</string>
+    <string name="perm_grant">Allow</string>
+    <string name="perm_denied_forever">Permission was denied. Open the app settings and enable Camera to continue.</string>
+    <string name="perm_open_settings">Open settings</string>
+    <string name="cd_shutter">Take photo</string>
+    <string name="cd_switch_camera">Switch front/back camera</string>
+    <string name="cd_flash_off">Flash: off</string>
+    <string name="cd_flash_auto">Flash: auto</string>
+    <string name="cd_flash_on">Flash: on</string>
+    <string name="cd_grid_on">Hide rule-of-thirds grid</string>
+    <string name="cd_grid_off">Show rule-of-thirds grid</string>
+    <string name="cd_last_photo">View last photo</string>
+    <string name="msg_saved">Saved to Pictures/PhotoCoach</string>
+    <string name="msg_capture_failed">Capture failed, please try again</string>
+    <string name="msg_camera_failed">Could not open the camera</string>
+    <string name="msg_no_viewer">No app available to view photos</string>
+    <string name="level_ok">Level</string>
+    <string name="level_tilt">Tilted %1$s°</string>
+    <string name="pitch_level">Phone upright</string>
+    <string name="pitch_down">Tilted down %1$s°</string>
+    <string name="pitch_up">Tilted up %1$s°</string>
+</resources>
