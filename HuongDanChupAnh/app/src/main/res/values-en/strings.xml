@@ -23,4 +23,13 @@
     <string name="pitch_level">Phone upright</string>
     <string name="pitch_down">Tilted down %1$s°</string>
     <string name="pitch_up">Tilted up %1$s°</string>
+    <string name="exposure_under">Too dark</string>
+    <string name="exposure_over">Overexposed</string>
+    <string name="exposure_backlit">Backlit, face too dark</string>
+    <string name="cd_debug_on">Hide analysis readout</string>
+    <string name="cd_debug_off">Show analysis readout</string>
+    <string name="debug_faces">Faces: %1$d</string>
+    <string name="debug_face_height">height %1$d%%</string>
+    <string name="debug_luma">Luma %1$d, clipped %2$d%%</string>
+    <string name="debug_face_bg">face/bg %1$s</string>
 </resources>

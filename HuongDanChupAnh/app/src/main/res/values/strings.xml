@@ -33,4 +33,15 @@
     <string name="pitch_level">Máy thẳng đứng</string>
     <string name="pitch_down">Máy chúc xuống %1$s°</string>
     <string name="pitch_up">Máy ngửa lên %1$s°</string>
+
+    <!-- Phân tích (M2) -->
+    <string name="exposure_under">Thiếu sáng</string>
+    <string name="exposure_over">Cháy sáng</string>
+    <string name="exposure_backlit">Ngược sáng, mặt bị tối</string>
+    <string name="cd_debug_on">Ẩn số đo phân tích</string>
+    <string name="cd_debug_off">Hiện số đo phân tích</string>
+    <string name="debug_faces">Mặt: %1$d</string>
+    <string name="debug_face_height">cao %1$d%%</string>
+    <string name="debug_luma">Sáng %1$d, cháy %2$d%%</string>
+    <string name="debug_face_bg">mặt/nền %1$s</string>
 </resources>
