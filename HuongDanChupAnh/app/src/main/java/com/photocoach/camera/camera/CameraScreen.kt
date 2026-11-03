@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import android.util.Size
 import android.view.Surface
+import android.view.View
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -31,12 +32,14 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Analytics
 import androidx.compose.material.icons.filled.Cameraswitch
 import androidx.compose.material.icons.filled.FlashAuto
 import androidx.compose.material.icons.filled.FlashOff
 import androidx.compose.material.icons.filled.FlashOn
 import androidx.compose.material.icons.filled.GridOff
 import androidx.compose.material.icons.filled.GridOn
+import androidx.compose.material.icons.outlined.Analytics
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.SnackbarHost
@@ -58,23 +61,30 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.photocoach.camera.R
+import com.photocoach.camera.overlay.AnalysisDebugInfo
+import com.photocoach.camera.overlay.ExposureChip
+import com.photocoach.camera.overlay.FaceOverlay
 import com.photocoach.camera.overlay.FocusRing
 import com.photocoach.camera.overlay.LevelGauge
 import com.photocoach.camera.overlay.RuleOfThirdsGrid
 import com.photocoach.camera.overlay.ShutterFlash
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.resume
 
 @Composable
 fun CameraScreen(viewModel: CameraViewModel = hiltViewModel()) {
@@ -82,15 +92,25 @@ fun CameraScreen(viewModel: CameraViewModel = hiltViewModel()) {
     val lifecycleOwner = LocalLifecycleOwner.current
     val state by viewModel.state.collectAsStateWithLifecycle()
     val tilt by viewModel.tilt.collectAsStateWithLifecycle(initialValue = null)
+    val frame by viewModel.frames.collectAsStateWithLifecycle()
+    val displayRotation by viewModel.displayRotation.collectAsStateWithLifecycle()
 
     val previewView = remember {
-        PreviewView(context).apply { scaleType = PreviewView.ScaleType.FILL_CENTER }
+        PreviewView(context).apply {
+            scaleType = PreviewView.ScaleType.FILL_CENTER
+            // TextureView: getOutputTransform() ổn định cho CoordinateTransform trên mọi máy.
+            implementationMode = PreviewView.ImplementationMode.COMPATIBLE
+        }
     }
+    var previewSize by remember { mutableStateOf(IntSize.Zero) }
 
     TrackDisplayRotation(viewModel::onDisplayRotationChanged)
 
-    LaunchedEffect(state.requestedLens) {
-        viewModel.bindCamera(lifecycleOwner, previewView.surfaceProvider)
+    // ViewPort phụ thuộc kích thước và hướng màn hình, nên ràng buộc lại khi một trong hai đổi.
+    LaunchedEffect(state.requestedLens, displayRotation, previewSize) {
+        if (previewSize == IntSize.Zero) return@LaunchedEffect
+        previewView.awaitSize(previewSize)
+        viewModel.bindCamera(lifecycleOwner, previewView.surfaceProvider, previewView.getViewPort(displayRotation))
     }
 
     val snackbar = remember { SnackbarHostState() }
@@ -117,6 +137,7 @@ fun CameraScreen(viewModel: CameraViewModel = hiltViewModel()) {
             Modifier
                 .align(Alignment.Center)
                 .aspectRatio(if (landscape) 4f / 3f else 3f / 4f)
+                .onSizeChanged { previewSize = it }
                 .pointerInput(Unit) {
                     detectTapGestures { offset ->
                         val point = previewView.meteringPointFactory.createPoint(offset.x, offset.y)
@@ -128,6 +149,23 @@ fun CameraScreen(viewModel: CameraViewModel = hiltViewModel()) {
         ) {
             AndroidView(factory = { previewView }, modifier = Modifier.fillMaxSize())
             if (state.gridEnabled) RuleOfThirdsGrid()
+            frame?.let { f ->
+                FaceOverlay(f, previewView)
+                ExposureChip(
+                    f.metrics.exposureState,
+                    Modifier
+                        .align(Alignment.TopCenter)
+                        .padding(top = 12.dp),
+                )
+                if (state.showDebug) {
+                    AnalysisDebugInfo(
+                        f,
+                        Modifier
+                            .align(Alignment.BottomStart)
+                            .padding(6.dp),
+                    )
+                }
+            }
             tilt?.let {
                 LevelGauge(it, viewModel.thresholds.level, Modifier.align(Alignment.Center))
             }
@@ -140,6 +178,13 @@ fun CameraScreen(viewModel: CameraViewModel = hiltViewModel()) {
                 FlashButton(state.flashMode, viewModel::cycleFlash)
             }
             GridButton(state.gridEnabled, viewModel::toggleGrid)
+            IconButton(onClick = viewModel::toggleDebug) {
+                Icon(
+                    if (state.showDebug) Icons.Filled.Analytics else Icons.Outlined.Analytics,
+                    contentDescription = stringResource(if (state.showDebug) R.string.cd_debug_on else R.string.cd_debug_off),
+                    tint = Color.White,
+                )
+            }
         }
         val primary: @Composable () -> Unit = {
             LastPhotoThumb(state.lastPhotoUri) { uri ->
@@ -300,6 +345,25 @@ private fun LastPhotoThumb(uri: Uri?, onOpen: (Uri) -> Unit) {
         thumb?.let {
             Image(it, contentDescription = null, contentScale = ContentScale.Crop, modifier = Modifier.fillMaxSize())
         }
+    }
+}
+
+/** Chờ PreviewView được layout đúng [size] để ViewPort có tỷ lệ của khung mới. */
+private suspend fun View.awaitSize(size: IntSize) {
+    if (width == size.width && height == size.height) return
+    suspendCancellableCoroutine { cont ->
+        val listener = object : View.OnLayoutChangeListener {
+            override fun onLayoutChange(
+                v: View, l: Int, t: Int, r: Int, b: Int, oldL: Int, oldT: Int, oldR: Int, oldB: Int,
+            ) {
+                if (r - l == size.width && b - t == size.height) {
+                    removeOnLayoutChangeListener(this)
+                    if (cont.isActive) cont.resume(Unit)
+                }
+            }
+        }
+        addOnLayoutChangeListener(listener)
+        cont.invokeOnCancellation { removeOnLayoutChangeListener(listener) }
     }
 }
 

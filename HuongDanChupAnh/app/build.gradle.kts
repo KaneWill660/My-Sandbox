@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.androidx.camera.camera2)
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.camera.view)
+    // Model đóng gói sẵn trong APK: chạy hoàn toàn trên máy, không cần mạng/Play Services.
+    implementation(libs.mlkit.face.detection)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)

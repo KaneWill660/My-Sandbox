@@ -6,10 +6,12 @@ import android.view.Surface
 import androidx.annotation.StringRes
 import androidx.camera.core.MeteringPoint
 import androidx.camera.core.Preview
+import androidx.camera.core.ViewPort
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.photocoach.camera.R
+import com.photocoach.camera.analysis.AnalysisFrame
 import com.photocoach.camera.analysis.DeviceTilt
 import com.photocoach.camera.analysis.GravitySensor
 import com.photocoach.camera.analysis.TiltMath
@@ -29,6 +31,8 @@ data class CameraUiState(
     val capabilities: CameraCapabilities? = null,
     val flashMode: FlashMode = FlashMode.OFF,
     val gridEnabled: Boolean = true,
+    /** Hiện số đo thô (tỷ lệ mặt, độ sáng) để kiểm tra M2 trên máy thật. */
+    val showDebug: Boolean = false,
     val isCapturing: Boolean = false,
     val lastPhotoUri: Uri? = null,
     /** Tăng mỗi lần chụp thành công, để UI chạy hiệu ứng nháy màn hình. */
@@ -46,16 +50,20 @@ class CameraViewModel @Inject constructor(
     private val _state = MutableStateFlow(CameraUiState())
     val state: StateFlow<CameraUiState> = _state.asStateFlow()
 
-    private val displayRotation = MutableStateFlow(Surface.ROTATION_0)
+    private val _displayRotation = MutableStateFlow(Surface.ROTATION_0)
+    val displayRotation: StateFlow<Int> = _displayRotation.asStateFlow()
 
     /** Góc nghiêng đã quy về hướng màn hình hiện tại; cảm biến chỉ chạy khi UI đang thu thập. */
-    val tilt: Flow<DeviceTilt> = combine(gravitySensor.gravity(), displayRotation) { g, rotation ->
+    val tilt: Flow<DeviceTilt> = combine(gravitySensor.gravity(), _displayRotation) { g, rotation ->
         TiltMath.tilt(g, rotation.toDegrees(), thresholds.level.minInPlaneGravity)
     }
 
-    suspend fun bindCamera(owner: LifecycleOwner, surfaceProvider: Preview.SurfaceProvider) {
+    /** Kết quả phân tích khung hình mới nhất (M2); null khi camera vừa mở lại. */
+    val frames: StateFlow<AnalysisFrame?> = camera.frames
+
+    suspend fun bindCamera(owner: LifecycleOwner, surfaceProvider: Preview.SurfaceProvider, viewPort: ViewPort?) {
         try {
-            val caps = camera.bind(owner, surfaceProvider, _state.value.requestedLens, displayRotation.value)
+            val caps = camera.bind(owner, surfaceProvider, viewPort, _state.value.requestedLens, _displayRotation.value)
             camera.setFlashMode(_state.value.flashMode)
             _state.update { it.copy(capabilities = caps) }
         } catch (e: Exception) {
@@ -65,7 +73,7 @@ class CameraViewModel @Inject constructor(
     }
 
     fun onDisplayRotationChanged(rotation: Int) {
-        displayRotation.value = rotation
+        _displayRotation.value = rotation
         camera.setTargetRotation(rotation)
     }
 
@@ -83,6 +91,8 @@ class CameraViewModel @Inject constructor(
     }
 
     fun toggleGrid() = _state.update { it.copy(gridEnabled = !it.gridEnabled) }
+
+    fun toggleDebug() = _state.update { it.copy(showDebug = !it.showDebug) }
 
     fun focusAt(point: MeteringPoint) = camera.focusAt(point)
 
@@ -109,7 +119,7 @@ class CameraViewModel @Inject constructor(
     fun consumeMessage() = _state.update { it.copy(message = null) }
 
     override fun onCleared() {
-        camera.unbind()
+        camera.release()
     }
 
     private companion object {
