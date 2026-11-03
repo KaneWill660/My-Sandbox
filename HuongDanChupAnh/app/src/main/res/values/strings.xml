@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ngôn ngữ mặc định: tiếng Việt. Bản tiếng Anh đặt ở values-en/. -->
+<resources>
+    <string name="app_name" translatable="false">Photo Coach</string>
+
+    <!-- Quyền -->
+    <string name="perm_title">Cần quyền dùng camera</string>
+    <string name="perm_body">Photo Coach cần camera để hiển thị khung hình và hướng dẫn bạn chụp. Mọi phân tích khung hình đều chạy ngay trên máy, ảnh không rời khỏi điện thoại nếu bạn không yêu cầu.</string>
+    <string name="perm_body_storage">Trên phiên bản Android này, app cũng cần quyền lưu trữ để lưu ảnh vào bộ sưu tập.</string>
+    <string name="perm_grant">Cho phép</string>
+    <string name="perm_denied_forever">Bạn đã từ chối quyền. Hãy mở Cài đặt của app và bật quyền Camera để tiếp tục.</string>
+    <string name="perm_open_settings">Mở Cài đặt</string>
+
+    <!-- Điều khiển camera -->
+    <string name="cd_shutter">Chụp ảnh</string>
+    <string name="cd_switch_camera">Đổi camera trước/sau</string>
+    <string name="cd_flash_off">Đèn flash: tắt</string>
+    <string name="cd_flash_auto">Đèn flash: tự động</string>
+    <string name="cd_flash_on">Đèn flash: bật</string>
+    <string name="cd_grid_on">Tắt lưới 1/3</string>
+    <string name="cd_grid_off">Bật lưới 1/3</string>
+    <string name="cd_last_photo">Xem ảnh vừa chụp</string>
+
+    <!-- Thông báo -->
+    <string name="msg_saved">Đã lưu ảnh vào Pictures/PhotoCoach</string>
+    <string name="msg_capture_failed">Chụp ảnh thất bại, hãy thử lại</string>
+    <string name="msg_camera_failed">Không mở được camera</string>
+    <string name="msg_no_viewer">Không có app nào để xem ảnh</string>
+
+    <!-- Thước cân bằng -->
+    <string name="level_ok">Đã cân bằng</string>
+    <string name="level_tilt">Nghiêng %1$s°</string>
+    <string name="pitch_level">Máy thẳng đứng</string>
+    <string name="pitch_down">Máy chúc xuống %1$s°</string>
+    <string name="pitch_up">Máy ngửa lên %1$s°</string>
+</resources>

@@ -1,0 +1,7 @@
+# Sao chép thành local.properties (file này đã nằm trong .gitignore).
+# Android Studio thường tự tạo sdk.dir.
+sdk.dir=C\:\Users\<you>\AppData\Local\Android\Sdk
+
+# (M5) Key cho "Chuyên gia nhận xét" — chỉ dùng cá nhân, đặt giới hạn chi tiêu thấp.
+# ANTHROPIC_API_KEY=
+# GEMINI_API_KEY=

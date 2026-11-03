@@ -1,0 +1,13 @@
+# Gradle / Android Studio
+.gradle/
+build/
+/app/build/
+.idea/
+*.iml
+.kotlin/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Bí mật và đường dẫn máy cục bộ — KHÔNG commit (chứa API key ở M5)
+local.properties
